@@ -1,4 +1,4 @@
-.texto-historia{
+.history-text{
     font-family: 'Quicksand', sans-serif;
     color: black;
     font-size: 100%;
@@ -6,10 +6,10 @@
   
   .autority-names {
     font-family: 'Quicksand', sans-serif;
-    color: darkgrey;
+    color: black;
   }
 
   .rol-authority {
     font-family: 'Quicksand', sans-serif;
-    color: black;
+    color: rgb(90, 86, 86);
   }
