@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - Proyecto</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/institucionalCSS.css" />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
     <!-- FontAwesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -27,9 +28,19 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Institucional">Institucional</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Institucional
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Institucional"
+                                asp-action="Historia">Nuestra Historia</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Institucional"
+                                asp-action="Staff">Staff Médico</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Institucional"
+                                asp-action="Autoridades">Autoridades</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home"
@@ -60,9 +71,12 @@
                 <span>Encontranos en las redes</span>
             </div>
             <div>
-                <a href="https://www.facebook.com/Fundacion.Favaloro/" style="color: dimgray;"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/fundacionfavaloro/" style="color: dimgray;"><i class="fab fa-instagram"></i></a>
-                <a href="https://twitter.com/fundfavaloro?lang=es" style="color: dimgray;"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/Fundacion.Favaloro/" style="color: dimgray;"><i
+                        class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/fundacionfavaloro/" style="color: dimgray;"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/fundfavaloro?lang=es" style="color: dimgray;"><i
+                        class="fab fa-twitter"></i></a>
             </div>
         </div>
     </footer>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,41 +9,27 @@ using Proyecto.Models;
 
 namespace Proyecto.Controllers
 {
-    public class HomeController : Controller
+    public class InstitucionalController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<InstitucionalController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public InstitucionalController(ILogger<InstitucionalController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Institucional()
-        {
-            return View();
-        }
 
         public IActionResult Historia()
         {
             return View();
         }
 
-
-         public IActionResult Prestaciones()
-        {
-            return View();
-        }
-         public IActionResult Cobertura()
+         public IActionResult Staff()
         {
             return View();
         }
 
-         public IActionResult Contacto()
+         public IActionResult Autoridades()
         {
             return View();
         }

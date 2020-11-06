@@ -14397,6 +14397,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Views\\Institucional\\Autoridades.cshtml",
+      "TargetPath": "Views\\Institucional\\Autoridades.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14404,6 +14409,16 @@
     {
       "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Views\\Institucional\\Historia.cshtml",
+      "TargetPath": "Views\\Institucional\\Historia.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Views\\Institucional\\Staff.cshtml",
+      "TargetPath": "Views\\Institucional\\Staff.cshtml",
       "FileKind": "mvc"
     },
     {
