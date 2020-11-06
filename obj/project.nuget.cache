@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pX7QcbGCukNwuuJX4AoWiHHt8MZG4JH8oTmLMOMnXVlNDdk22meXS0pJZ/41THzGFHGj7goliHDMaiiPjlrX8A==",
+  "dgSpecHash": "Oe2aDOaUKGE83icvc+3Kkc5wgRtgPKASdI9HuVFEab4AsitjGVj1qSJXTHhhbQHlHJ3O5jpV4GM6MMG14BjKCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto.csproj",
+  "projectFilePath": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Proyecto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luciana\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Luciana\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

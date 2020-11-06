@@ -69,3 +69,25 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.title-sf {
+  text-align: -webkit-center;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: wheat;
+  padding: 15px;
+  font-size: 200%;
+}
+
+.redes-footer {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  background-color: wheat;
+  font-size: 150%;
+}
+
+#carousel-text {
+  font-family: 'Cormorant Garamond', serif;
+  color: black;
+  font-size: x-large;
+}
+
