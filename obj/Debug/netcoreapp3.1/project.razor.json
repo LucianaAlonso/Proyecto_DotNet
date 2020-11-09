@@ -14407,6 +14407,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Home\\Prestaciones.cshtml",
+      "TargetPath": "Views\\Home\\Prestaciones.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Institucional\\Historia.cshtml",
       "TargetPath": "Views\\Institucional\\Historia.cshtml",
       "FileKind": "mvc"
@@ -14417,8 +14422,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Home\\Contacto.cshtml",
+      "TargetPath": "Views\\Home\\Contacto.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Home\\Coberturas.cshtml",
+      "TargetPath": "Views\\Home\\Coberturas.cshtml",
       "FileKind": "mvc"
     },
     {
