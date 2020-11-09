@@ -13,3 +13,17 @@
     font-family: 'Quicksand', sans-serif;
     color: rgb(90, 86, 86);
   }
+
+  #button-link-accordion {
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+  }
+
+  .accordion-style {
+    display: inline-grid;
+    width: 350px;
+  }
+
+  #card-accordion-style {
+    background-color: dimgray;
+  }
