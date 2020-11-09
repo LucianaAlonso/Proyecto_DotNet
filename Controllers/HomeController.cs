@@ -38,7 +38,7 @@ namespace Proyecto.Controllers
         {
             return View();
         }
-         public IActionResult Cobertura()
+         public IActionResult Coberturas()
         {
             return View();
         }

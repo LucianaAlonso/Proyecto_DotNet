@@ -14392,6 +14392,11 @@
   "RootNamespace": "Proyecto",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Loggin\\InicioSesion.cshtml",
+      "TargetPath": "Views\\Loggin\\InicioSesion.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -14444,6 +14449,11 @@
     {
       "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Views\\Loggin\\Registro.cshtml",
+      "TargetPath": "Views\\Loggin\\Registro.cshtml",
       "FileKind": "mvc"
     },
     {
