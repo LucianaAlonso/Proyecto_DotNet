@@ -8818,11 +8818,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Proyecto.csproj",
+      "projectUniqueName": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Proyecto.csproj",
       "projectName": "Proyecto",
-      "projectPath": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\Proyecto.csproj",
+      "projectPath": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\Proyecto.csproj",
       "packagesPath": "C:\\Users\\Luciana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto-.Net\\obj\\",
+      "outputPath": "C:\\Users\\Luciana\\Desktop\\Cosas\\.Net\\Proyecto\\Proyecto_DotNet\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Luciana\\AppData\\Roaming\\NuGet\\NuGet.Config"
