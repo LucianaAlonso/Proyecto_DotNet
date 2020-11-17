@@ -1,46 +1,55 @@
 <div class="">
-
-    <h4 class="titulo-pagina">Contacto</h4>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <form>
-                    <div class="form-group" style="width: 400px;">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control form-control-lg" id="nombre">
-                    </div>
-
-                    <div class="form-group" style="width: 400px;">
-                        <label for="mail">Mail</label>
-                        <input type="email" class="form-control" id="mail" placeholder="name@example.com">
-                    </div>
-
-                    <div class="form-group" style="width: 400px;">
-                        <label for="telefono" style="width: 400px;">Telefono</label>
-                        <input type="number" class="form-control" id="telefono">
-                    </div>
-
-                    <div class="form-group" style="width: 400px;">
-                        <label for="consulta">Ingresá tu Consulta</label>
-                        <textarea class="form-control" id="consulta" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-dark">Enviar</button>
-                </form>
-            </div>
-            <div class="col-sm">
-                <div>
-                    Datos útiles
+    <div class="row">
+        <div class="col-sm">
+            <h4 class="title-page">Contacto</h4>
+            <form>
+                <div class="form-group" id="contact-form-style">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control form-control-lg" id="nombre">
                 </div>
-                <div>
-                    <i class="fas fa-map-marker-alt"></i>
+
+                <div class="form-group" id="contact-form-style">
+                    <label for="mail">Mail</label>
+                    <input type="email" class="form-control" id="mail" placeholder="name@example.com">
+                </div>
+
+                <div class="form-group" id="contact-form-style">
+                    <label for="telefono">Telefono</label>
+                    <input type="number" class="form-control" id="telefono">
+                </div>
+
+                <div class="form-group" id="contact-form-style">
+                    <label for="consulta">Ingresá tu Consulta</label>
+                    <textarea class="form-control" id="consulta" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </form>
+        </div>
+
+
+        <div class="col-sm">
+            <div class="content-data">
+                <h2 class="title-page">Datos útiles</h2>
+                <div class="contact-data">
+                    <i class="fas fa-map-marked-alt"></i>
                     Av. Belgrano 1746, Ciudad Autónoma de Bs. As.
                 </div>
-                <div>
-                    <i class="fas fa-phone-square-alt"></i>
-                    CENTRAL DE TURNOS:
-                    (011) 4378-1200/1300/1400 (líneas rotativas)
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe style="border: 0;"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.6133974716827!2d-58.39321198541892!3d-34.6139362655445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccadc37c23db1%3A0xe74d5ae20a6d606c!2sAv.+Belgrano+1746%2C+C1095+CABA!5e0!3m2!1ses!2sar!4v1544109747872"
+                        width="100%" height="250" frameborder="0" allowfullscreen="allowfullscreen"><span
+                            data-mce-type="bookmark"
+                            style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;"
+                            class="mce_SELRES_start"></span></iframe>
                 </div>
-                <iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.6133974716827!2d-58.39321198541892!3d-34.6139362655445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccadc37c23db1%3A0xe74d5ae20a6d606c!2sAv.+Belgrano+1746%2C+C1095+CABA!5e0!3m2!1ses!2sar!4v1544109747872" width="100%" height="250" frameborder="0" allowfullscreen="allowfullscreen"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe>
             </div>
+            <div class="content-data">
+                <div class="contact-data">
+                    Central de Turnos
+                    </br>
+                     <i class="fas fa-phone-square"></i>   (011) 4378-1200/1300/1400 (líneas rotativas)
+                </div>
+            </div>
+
         </div>
     </div>

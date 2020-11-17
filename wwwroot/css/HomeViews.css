@@ -1,0 +1,28 @@
+#os-icon {
+    align-content: flex-end;
+    padding: 0px 10px;
+}
+
+.title-page {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: xx-large;
+    padding: 10px 0;
+}
+
+#contact-form-style {
+    font-family: 'Quicksand', sans-serif;
+    width: 400px;
+}
+
+.contact-data{
+    padding: 20px 0px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.content-data{
+    padding: 10px;
+    margin: 10px 0;
+    background-color: darkgray;
+    color: white;
+    border-color: #343a40;
+}
