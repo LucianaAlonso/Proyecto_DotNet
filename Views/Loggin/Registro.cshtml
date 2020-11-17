@@ -2,7 +2,7 @@
     <span>Registrate</span>
 </div>
 
-<form class="form-style">
+<form class="form-style" method="POST" action="@Url.Action("RegistrarUsuario", "Loggin")">
     <div class="form-group">
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" name="nombre">
