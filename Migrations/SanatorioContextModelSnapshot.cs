@@ -15,13 +15,29 @@ namespace Proyecto.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9");
 
-            modelBuilder.Entity("Sanatorio.Models.Medico", b =>
+            modelBuilder.Entity("Sanatorio.Models.Autoridad", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("EsAutoridad")
+                    b.Property<string>("NombreYApellido")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RolAutoridad")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Autoridad");
+                });
+
+            modelBuilder.Entity("Sanatorio.Models.Medico", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Especialidad")
@@ -30,9 +46,6 @@ namespace Proyecto.Migrations
 
                     b.Property<string>("NombreYApellido")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RolAutoridad")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RolEnEspecialidad")
@@ -84,21 +97,9 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ObraSocialNombre")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Mail");
 
-                    b.HasIndex("ObraSocialNombre");
-
                     b.ToTable("Usuario");
-                });
-
-            modelBuilder.Entity("Sanatorio.Models.Usuario", b =>
-                {
-                    b.HasOne("Sanatorio.Models.ObraSocial", "ObraSocial")
-                        .WithMany()
-                        .HasForeignKey("ObraSocialNombre");
                 });
 #pragma warning restore 612, 618
         }

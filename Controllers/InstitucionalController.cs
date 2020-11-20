@@ -30,6 +30,7 @@ namespace Proyecto.Controllers
         }
 
          public IActionResult Autoridades() { 
+            ViewBag.Autoridades = db.Autoridad.ToList();
             return View();
         }
 

@@ -40,7 +40,7 @@ namespace Proyecto.Controllers
 
             db.Usuario.Add(nuevoUsuario);
             db.SaveChanges();
-            return View("Index");
+            return View("InicioSesion");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

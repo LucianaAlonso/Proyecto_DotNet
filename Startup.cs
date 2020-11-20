@@ -27,6 +27,14 @@ namespace Proyecto
         {
             services.AddControllersWithViews();
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.Cookie.Name = ".Sanatorio.Session";
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddDbContext<SanatorioContext>(options => 
             options.UseSqlite(Configuration.GetConnectionString("SanatorioContext")));
         }
@@ -50,6 +58,8 @@ namespace Proyecto
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
