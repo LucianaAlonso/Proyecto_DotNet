@@ -1,8 +1,6 @@
 ﻿$(document).ready(function(){
 
-    $('#loggin-usuario').on('click', function(){
-        
-    })
+   
     
     $('#autho').on('click', function(){
         $.ajax({

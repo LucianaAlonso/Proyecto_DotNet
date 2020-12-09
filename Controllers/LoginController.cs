@@ -10,21 +10,42 @@ using Sanatorio.Models;
 
 namespace Proyecto.Controllers
 {
-    public class LogginController : Controller
+    public class LoginController : Controller
     {
-        private readonly ILogger<LogginController> _logger;
+        private readonly ILogger<LoginController> _logger;
         private readonly SanatorioContext db;
 
-        public LogginController(ILogger<LogginController> logger, SanatorioContext contexto) {
+        public LoginController(ILogger<LoginController> logger, SanatorioContext contexto) {
             this._logger = logger;
             this.db = contexto;
         }
 
-        public IActionResult Registro() {
+        public IActionResult InicioSesion(){
             return View();
         }
 
-        public IActionResult InicioSesion(){
+        public IActionResult Login(string mail, string contraseña){
+            Usuario usuarioLogin = db.Usuario.FirstOrDefault(usuario => usuario.Mail == mail);
+            if(usuarioLogin != null){
+                if(usuarioLogin.Contraseña == contraseña){
+                    AgregarUsuarioASession(usuarioLogin);
+                    return View("Home/Index");
+                }else{
+                    ViewBag.ErrorEnLogin = true;
+                    return View("InicioSesion");
+                }
+            }else{
+                ViewBag.ErrorEnLogin = true;
+                return View("InicioSesion");
+            }
+        }
+
+        private JsonResult AgregarUsuarioASession(Usuario usuarioLogin) {
+           HttpContext.Session.Set<Usuario>("UsuarioLogueado", usuarioLogin);
+            return Json(usuarioLogin);
+        }
+
+        public IActionResult Registro(){
             return View();
         }
 
@@ -37,7 +58,7 @@ namespace Proyecto.Controllers
                 Apellido = apellido,
                 Contraseña = contraseña
             };
-
+            
             db.Usuario.Add(nuevoUsuario);
             db.SaveChanges();
             return View("InicioSesion");
