@@ -1,3 +1,9 @@
-﻿@{
-    Layout = "_Layout";
+﻿@using Microsoft.AspNetCore.Http
+@{
+    string user = this.Context.Session.GetString("UsuarioLogueado");
+    if(string.IsNullOrEmpty(user)){
+        Layout = "_Layout";
+    }else{
+        Layout = "_LayoutUser";
+    }
 }

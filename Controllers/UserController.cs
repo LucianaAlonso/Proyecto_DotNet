@@ -24,8 +24,13 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        public IActionResult IndexUser(){
+        public IActionResult WelcomePage(){
             return View();
+        }
+
+        public IActionResult Salir(){
+            HttpContext.Session.Remove("UsuarioLogeado");
+            return RedirectToAction("InicioSesion", "Login") ;
         }
 
        

@@ -24,14 +24,15 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Login(string mail, string contraseña){
             Usuario usuarioLogin = db.Usuario.FirstOrDefault(usuario => usuario.Mail == mail);
             if(usuarioLogin != null){
                 if(usuarioLogin.Contraseña == contraseña){
-                    AgregarUsuarioASession(usuarioLogin);
                     ViewBag.UsuarioLogeado = true;
-                    ViewBag.Usuario = usuarioLogin;
-                    return RedirectToAction("IndexUser", "User");
+                    ViewBag.NombreUsuario = usuarioLogin.Nombre;
+                    AgregarUsuarioASession(usuarioLogin);
+                    return RedirectToAction("WelcomePage", "User");
                 }else{
                     ViewBag.ErrorEnLogin = true;
                     return View("InicioSesion");
