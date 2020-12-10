@@ -29,7 +29,9 @@ namespace Proyecto.Controllers
             if(usuarioLogin != null){
                 if(usuarioLogin.Contraseña == contraseña){
                     AgregarUsuarioASession(usuarioLogin);
-                    return View("Home/Index");
+                    ViewBag.UsuarioLogeado = true;
+                    ViewBag.Usuario = usuarioLogin;
+                    return RedirectToAction("IndexUser", "User");
                 }else{
                     ViewBag.ErrorEnLogin = true;
                     return View("InicioSesion");
