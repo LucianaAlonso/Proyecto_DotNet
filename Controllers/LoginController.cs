@@ -29,10 +29,9 @@ namespace Proyecto.Controllers
             Usuario usuarioLogin = db.Usuario.FirstOrDefault(usuario => usuario.Mail == mail);
             if(usuarioLogin != null){
                 if(usuarioLogin.Contraseña == contraseña){
-                    ViewBag.UsuarioLogeado = true;
-                    ViewBag.NombreUsuario = usuarioLogin.Nombre;
+                    ViewData["Nombre"] = usuarioLogin.Nombre;
                     AgregarUsuarioASession(usuarioLogin);
-                    return RedirectToAction("WelcomePage", "User");
+                    return RedirectToAction("Index", "Home");
                 }else{
                     ViewBag.ErrorEnLogin = true;
                     return View("InicioSesion");
