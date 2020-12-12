@@ -8,16 +8,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Proyecto.Models;
+using Sanatorio.Models;
 
 namespace Proyecto.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly SanatorioContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, SanatorioContext contexto)
         {
             _logger = logger;
+            this.db = contexto;
         }
 
         public IActionResult Index()
@@ -40,8 +43,9 @@ namespace Proyecto.Controllers
         {
             return View();
         }
-         public IActionResult Coberturas()
-        {
+         public IActionResult Coberturas() {
+             ViewBag.ObrasSociales = db.ObraSocial.ToList();
+             ViewBag.Planes = db.Plan.ToList();
             return View();
         }
 

@@ -1,25 +1,34 @@
+@model IEnumerable<Sanatorio.Models.Plan>
+
+
 <div class="">
   Coberturas
 </div>
 
 <div class="row">
 
-  <div class="col-sm">
-    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-      <div class="card-header"><h5>Accord Salud</h5>
-        <a href="https://www.accordsalud.com.ar/" target="_blank">
-          <i class="fas fa-globe" style="color: white;"></i></a></div>
-      <div class="card-body">
-        <h6 class="card-title">Planes:</h6>
-        <p class="card-text">
-        <div><i class="far fa-dot-circle"></i>   210</div>
-        <div><i class="far fa-dot-circle"></i>   211</div>
-        <div><i class="far fa-dot-circle"></i>   310</div>
-        </p>
+  @foreach (var os in ViewBag.ObrasSociales)
+  {
+
+    <div class="col-sm">
+      <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+          <h5>@os.Nombre</h5>
+          <a href=@os.PaginaWeb target="_blank">
+            <i class="fas fa-globe" style="color: white;"></i></a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title">Planes:</h6>
+          <p class="card-text">
+            <div><i class="far fa-dot-circle"></i> plan.Nombre</div>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
+  }
+
 </div>
+
 
 
 
