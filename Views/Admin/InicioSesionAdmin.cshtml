@@ -1,0 +1,26 @@
+@{
+    bool errorEnLogin = ViewBag.ErrorEnLogin != null;
+}
+
+<div class="titulo-pagina">
+    <span>Iniciá Sesión</span>
+</div>
+
+<form class="form-style" method="POST" action='@Url.Action("LoginAdmin", "Admin")'>
+    <div class="form-group">
+        <label for="usuario">Usuario</label>
+        <input type="text" class="form-control" name="usuario" required>
+    </div>
+
+    <div class="form-group">
+        <label for="contraseña">Constraseña</label>
+        <input type="password" class="form-control" name="contraseña" required>
+    </div>
+
+    @if(errorEnLogin){
+        <div>
+            <i class="fas fa-exclamation-triangle" style="color: red;"></i><span style="color: red;">El usuario y/o contrsaeña no son válidos.</span>
+        </div>
+    }
+    <button type="submit" id="loggin-usuario" class="btn btn-dark">Ingresar</button>
+</form>
