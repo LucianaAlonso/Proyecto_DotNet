@@ -51,13 +51,23 @@ namespace Proyecto.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(int ID, string especialidad, string rolEnEspecialidad)
+        public IActionResult EditarMedico(int ID, string especialidad, string rolEnEspecialidad)
         {
             Medico medico = db.Medico.FirstOrDefault(n => n.ID == ID);
             medico.Especialidad = especialidad;
             medico.RolEnEspecialidad = rolEnEspecialidad;
 
             db.Medico.Update(medico);
+            db.SaveChanges();
+
+            return Redirect("VerMedicos");
+        }
+
+        public IActionResult EliminarMedico(int ID)
+        {
+            Medico medico = db.Medico.FirstOrDefault(n => n.ID == ID);
+            
+            db.Medico.Remove(medico);
             db.SaveChanges();
 
             return Redirect("VerMedicos");

@@ -11,7 +11,7 @@
                     <button type="button" class="btn btn-light" data-toggle="modal"
                         data-target='#@("editMedicoModal"+medico.ID)'>Editar</button>
                     <button type="button" class="btn btn-light" data-toggle="modal"
-                        data-target="#deleteConfirmModal">Eliminar</button>
+                        data-target='#@("deleteConfirmModal"+medico.ID)'>Eliminar</button>
 
                     <!-- Modal Editar-->
                     <div class="modal fade" id='@("editMedicoModal"+medico.ID)' tabindex="-1" role="dialog"
@@ -25,7 +25,7 @@
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
-                                <form method="POST" asp-action="Editar">
+                                <form method="POST" asp-action="EditarMedico">
                                     <div class="modal-body" id="bodyModal">
 
                                         <input type="hidden" name="ID" value="@medico.ID">
@@ -59,19 +59,23 @@
                             <div class="modal-content">
                                 <div class="modal-header" id="headerModal">
                                     <h5 class="modal-title" id="deleteConfirmModalLabel">
-                                        <i class="fas fa-exclamation-triangle"></i>Atención: Va a eliminar un profesional
+                                        <i class="fas fa-exclamation-triangle"></i> Atención !
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
-                                <div class="modal-body" id="bodyModal">
-                                    Está seguro de querer eliminarlo?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
-                                    <button type="button" class="btn btn-dark">Si</button>
-                                </div>
+                                <form method="DELETE" asp-action="EliminarMedico">
+                                    <div class="modal-body" id="bodyModal">
+                                        <input type="hidden" name="ID" value="@medico.ID">
+                                        Va a eliminar al profesional @medico.NombreYApellido Está seguro de querer
+                                        eliminarlo?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
+                                        <button type="submit" class="btn btn-dark">Si</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
