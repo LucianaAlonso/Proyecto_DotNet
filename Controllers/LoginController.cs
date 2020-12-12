@@ -29,7 +29,7 @@ namespace Proyecto.Controllers
             Usuario usuarioLogin = db.Usuario.FirstOrDefault(usuario => usuario.Mail == mail);
             if(usuarioLogin != null){
                 if(usuarioLogin.Contraseña == contraseña){
-                    ViewData["Nombre"] = usuarioLogin.Nombre;
+                    TempData["Nombre"] = usuarioLogin.Nombre;
                     AgregarUsuarioASession(usuarioLogin);
                     return RedirectToAction("Index", "Home");
                 }else{
@@ -48,6 +48,7 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult Registro(){
+            ViewBag.ObrasSociales = db.ObraSocial.ToList();
             return View();
         }
 

@@ -19,5 +19,9 @@ namespace Sanatorio.Models {
         public DbSet<ObraSocial> ObraSocial { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Autoridad> Autoridad { get; set; }
+        public DbSet<Nota> Nota { get; set; }
+        public DbSet<Admin> Admin { get; set; }
+        public DbSet<Turno> Turno { get; set; }
+        public DbSet<Plan> Plan { get; set; }
     }
 }

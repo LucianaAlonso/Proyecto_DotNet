@@ -9,7 +9,7 @@ namespace Sanatorio.Models {
         public string Nombre { get; set; }
         public string PaginaWeb { get; set; }
         
-       // public List<string> Planes { get; set; }
+        public List<Plan> Planes { get; set; }
         [Required]
         public bool Activa { get; set; }
     }

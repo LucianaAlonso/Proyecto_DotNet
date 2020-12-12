@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -47,6 +49,39 @@ namespace Proyecto.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult EnviarConsulta(string nombre, string mail, string telefono, string consulta) {
+
+            MailAddress to = new MailAddress(mail);
+            MailAddress from = new MailAddress("sanatoriofavaloro@gmail.com");
+            MailMessage message = new MailMessage(from, to);
+
+                message.Subject = "Recibimos tu consulta";
+                message.Body = "<h3>Hola " + nombre + "</h3>" +
+                                "<div><p>Gracias por comunicarte con nuestro sanatorio, te informamos que recibimos tu consulta satisfactoriamente y te estaremos contestando por este medio lo mas pronto posible.</p></div>" +
+                                "<div><p>Saludos Coridales</p></div>" +
+                                "<div><p><i class=" + "fas fa-users" + "></i> Servicio de atención a pacientes del Sanatorio Favaloro.</p></div>";
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    UseDefaultCredentials = false,
+                    Credentials = new System.Net.NetworkCredential("sanatoriofavaloro@gmail.com", "favaloro123"),
+                    EnableSsl = true
+                }; 
+
+                try
+                {  
+                    client.Send(message);
+                }
+                catch (SmtpException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+                return Redirect("/Home/Index");
+            }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
