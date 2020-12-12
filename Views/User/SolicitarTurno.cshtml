@@ -1,0 +1,30 @@
+<div class="">
+    <div class="row">
+        <div class="col-sm">
+            <h4 class="title-page">Solicitá tu turno</h4>
+            <form method="POST" action='@Url.Action("EnviarSolicitudTurno", "User")'>
+                <div class="form-group" id="contact-form-style">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" value=@ViewBag.Nombre class="form-control form-control-lg" name="nombre">
+                </div>
+
+                <div class="form-group" id="contact-form-style">
+                    <label for="mail">Mail</label>
+                    <input type="email" value=@ViewBag.Mail class="form-control" name="mail">
+                </div>
+
+                <div class="form-group" id="contact-form-style">
+                    <label for="telefono">Telefono</label>
+                    <input type="text" class="form-control" name="telefono">
+                </div>
+
+                <div class="form-group" id="contact-form-style">
+                    <label for="solicitudTurno">Por favor dejanos el nombre del médico o la especialidad con la que
+                        deseas sacar el turno y tu disponibilidad horaria. Muchas Gracias</label>
+                    <textarea class="form-control" name="solicitudTurno" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>

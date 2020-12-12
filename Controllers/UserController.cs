@@ -24,7 +24,10 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        public IActionResult WelcomePage(){
+        public IActionResult SolicitarTurno(){
+            Usuario usuarioLogeado = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
+            ViewBag.Nombre = usuarioLogeado.Nombre;
+            ViewBag.Mail = usuarioLogeado.Mail;
             return View();
         }
 
