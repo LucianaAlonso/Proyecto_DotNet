@@ -45,6 +45,14 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        public IActionResult VerMedicos(){
+            ViewBag.Medicos = db.Medico.ToList();
+            return View();
+        }
+        public IActionResult AgregarOS(){
+            return View();
+        }
+
         private JsonResult AgregarAdminASession(Admin adminLogin) {
            HttpContext.Session.Set<Admin>("AdminLogueado", adminLogin);
             return Json(adminLogin);

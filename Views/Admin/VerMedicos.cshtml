@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var medico in @ViewBag.Medicos)
+        {
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body" id="card-style">
+                    <h5 class="card-title"><i class="fas fa-user-md"></i>@medico.NombreYApellido</h5>
+                    <p class="card-text">- Especialidad: @medico.Especialidad</p>
+                    <p class="card-text">- Rol: @medico.RolEnEspecialidad</p>
+                    <a href="#" class="btn btn-secondary">Editar</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
