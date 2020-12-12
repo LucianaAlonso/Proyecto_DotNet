@@ -9,10 +9,11 @@
                     <p class="card-text">- Especialidad: @medico.Especialidad</p>
                     <p class="card-text">- Rol: @medico.RolEnEspecialidad</p>
                     <button type="button" class="btn btn-light" data-toggle="modal" data-target="#EditMedicoModal">Editar</button>
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#DeleteConfirmModal">Eliminar</button>
 
-                    <!-- Modal -->
+                    <!-- Modal Editar-->
                     <div class="modal fade" id="EditMedicoModal" tabindex="-1" role="dialog"
-                        aria-labelledby="EditMedicoModalLabel" aria-hidden="true">
+                        aria-labelledby="EditMedicoModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header" id="headerModal">
@@ -28,6 +29,30 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
                                     <button type="button" class="btn btn-dark">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Modal Editar-->
+                    <div class="modal fade" id="DeleteConfirmModal" tabindex="-1" role="dialog"
+                        aria-labelledby="DeleteConfirmModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" id="headerModal">
+                                    <h5 class="modal-title" id="DeleteConfirmModalEditMedicoModalLabel">
+                                        <i class="fas fa-exclamation-triangle"></i>Atención: Va a eliminar un profesional
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="bodyModal">
+                                    Está seguro de querer eliminarlo?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
+                                    <button type="button" class="btn btn-dark">Si</button>
                                 </div>
                             </div>
                         </div>
