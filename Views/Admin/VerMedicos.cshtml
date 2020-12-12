@@ -8,39 +8,57 @@
                     <h5 class="card-title"><i class="fas fa-user-md"></i>@medico.NombreYApellido</h5>
                     <p class="card-text">- Especialidad: @medico.Especialidad</p>
                     <p class="card-text">- Rol: @medico.RolEnEspecialidad</p>
-                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#EditMedicoModal">Editar</button>
-                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#DeleteConfirmModal">Eliminar</button>
+                    <button type="button" class="btn btn-light" data-toggle="modal"
+                        data-target='#@("editMedicoModal"+medico.ID)'>Editar</button>
+                    <button type="button" class="btn btn-light" data-toggle="modal"
+                        data-target="#deleteConfirmModal">Eliminar</button>
 
                     <!-- Modal Editar-->
-                    <div class="modal fade" id="EditMedicoModal" tabindex="-1" role="dialog"
-                        aria-labelledby="EditMedicoModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+                    <div class="modal fade" id='@("editMedicoModal"+medico.ID)' tabindex="-1" role="dialog"
+                        aria-labelledby="editMedicoModalLabel" data-backdrop="static" data-keyboard="false"
+                        aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header" id="headerModal">
-                                    <h5 class="modal-title" id="EditMedicoModalLabel">@medico.NombreYApellido</h5>
+                                    <h5 class="modal-title" id="editMedicoModalLabel">@medico.NombreYApellido</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
-                                <div class="modal-body" id="bodyModal">
-                                    @medico.Especialidad
-                                    @medico.RolEnEspecialidad
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-dark">Guardar</button>
-                                </div>
+                                <form method="POST" asp-action="Editar">
+                                    <div class="modal-body" id="bodyModal">
+
+                                        <input type="hidden" name="ID" value="@medico.ID">
+                                        <div class="form-group">
+                                            <label for="especialidad">Especialidad</label>
+                                            <input type="text" value="@medico.Especialidad" class="form-control"
+                                                name="especialidad" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="rolEnEspecialidad">Rol en Especialidad</label>
+                                            <input type="text" value="@medico.RolEnEspecialidad" class="form-control"
+                                                name="rolEnEspecialidad" required>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-dark">Guardar</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
 
-                     <!-- Modal Editar-->
-                    <div class="modal fade" id="DeleteConfirmModal" tabindex="-1" role="dialog"
-                        aria-labelledby="DeleteConfirmModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+                    <!-- Modal Eliminar-->
+                    <div class="modal fade" id='@("deleteConfirmModal"+medico.ID)' tabindex="-1" role="dialog"
+                        aria-labelledby="deleteConfirmModalLabel" data-backdrop="static" data-keyboard="false"
+                        aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header" id="headerModal">
-                                    <h5 class="modal-title" id="DeleteConfirmModalEditMedicoModalLabel">
+                                    <h5 class="modal-title" id="deleteConfirmModalLabel">
                                         <i class="fas fa-exclamation-triangle"></i>Atención: Va a eliminar un profesional
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

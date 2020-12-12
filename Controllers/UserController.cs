@@ -32,7 +32,7 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult Salir(){
-            HttpContext.Session.Remove("UsuarioLogeado");
+            HttpContext.Session.Remove("UsuarioLogueado");
             return RedirectToAction("InicioSesion", "Login") ;
         }
 

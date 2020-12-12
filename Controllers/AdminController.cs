@@ -49,6 +49,20 @@ namespace Proyecto.Controllers
             ViewBag.Medicos = db.Medico.ToList();
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Editar(int ID, string especialidad, string rolEnEspecialidad)
+        {
+            Medico medico = db.Medico.FirstOrDefault(n => n.ID == ID);
+            medico.Especialidad = especialidad;
+            medico.RolEnEspecialidad = rolEnEspecialidad;
+
+            db.Medico.Update(medico);
+            db.SaveChanges();
+
+            return Redirect("VerMedicos");
+        }
+
         public IActionResult AgregarOS(){
             return View();
         }
@@ -59,7 +73,7 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult Salir(){
-            HttpContext.Session.Remove("UsuarioLogeado");
+            HttpContext.Session.Remove("AdminLogueado");
             return RedirectToAction("InicioSesion", "Login") ;
         }
 
