@@ -1,9 +1,14 @@
 ﻿@using Microsoft.AspNetCore.Http
 @{
     string user = this.Context.Session.GetString("UsuarioLogueado");
-    if(string.IsNullOrEmpty(user)){
+    string admin = this.Context.Session.GetString("AdminLogueado");
+    if(string.IsNullOrEmpty(user) && string.IsNullOrEmpty(admin)){
         Layout = "_Layout";
     }else{
-        Layout = "_LayoutUser";
+        if(string.IsNullOrEmpty(user)){
+            Layout = "_LayoutAdmin";
+        }else{
+            Layout = "_LayoutUser";
+        }        
     }
 }

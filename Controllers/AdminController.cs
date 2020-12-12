@@ -33,11 +33,11 @@ namespace Proyecto.Controllers
                     return View("AdminHome");
                 }else{
                     ViewBag.ErrorEnLogin = true;
-                    return View("InicioSesion");
+                    return View("InicioSesionAdmin");
                 }
             }else{
                 ViewBag.ErrorEnLogin = true;
-                return View("InicioSesion");
+                return View("InicioSesionAdmin");
             }
         }
 
