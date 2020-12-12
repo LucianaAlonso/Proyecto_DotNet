@@ -1,7 +1,6 @@
 ﻿$(document).ready(function(){
 
    
-    
     $('#autho').on('click', function(){
         $.ajax({
             url: 'institucional/GetAutoridades',

@@ -8,7 +8,31 @@
                     <h5 class="card-title"><i class="fas fa-user-md"></i>@medico.NombreYApellido</h5>
                     <p class="card-text">- Especialidad: @medico.Especialidad</p>
                     <p class="card-text">- Rol: @medico.RolEnEspecialidad</p>
-                    <a href="#" class="btn btn-secondary">Editar</a>
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#EditMedicoModal">Editar</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="EditMedicoModal" tabindex="-1" role="dialog"
+                        aria-labelledby="EditMedicoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" id="headerModal">
+                                    <h5 class="modal-title" id="EditMedicoModalLabel">@medico.NombreYApellido</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="bodyModal">
+                                    @medico.Especialidad
+                                    @medico.RolEnEspecialidad
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-dark">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         }
