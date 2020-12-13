@@ -9,7 +9,7 @@ using Sanatorio.Models;
 namespace Proyecto.Migrations
 {
     [DbContext(typeof(SanatorioContext))]
-    [Migration("20201213174605_initialCommit")]
+    [Migration("20201213221817_initialCommit")]
     partial class initialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,12 +191,10 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ObraSocialID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("ObraSocial")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Mail");
-
-                    b.HasIndex("ObraSocialID");
 
                     b.ToTable("Usuario");
                 });
@@ -215,13 +213,6 @@ namespace Proyecto.Migrations
                         .HasForeignKey("PacienteMail")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Sanatorio.Models.Usuario", b =>
-                {
-                    b.HasOne("Sanatorio.Models.ObraSocial", "ObraSocial")
-                        .WithMany()
-                        .HasForeignKey("ObraSocialID");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,20 +5,19 @@
   Coberturas
 </div>
 
-<div class="row">
+<div class="container">
+  <div class="row row-cols-4">
 
-  @foreach (var os in ViewBag.ObrasSociales)
-  {
+    @foreach (var os in ViewBag.ObrasSociales)
+    {
 
-    <div class="col-sm">
-      <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">
-          <h5>@os.Nombre</h5>
-          <a href=@os.PaginaWeb target="_blank">
-            <i class="fas fa-globe" style="color: white;"></i></a>
+      <div class="card" id="card-os">
+        <div class="card-body">
+          <h5 class="card-title" style="color: white;">@os.Nombre <a href=@os.PaginaWeb target="_blank">
+              <i class="fas fa-globe" style="color: white;"></i></a></h5>
         </div>
       </div>
-    </div>
-  }
+    }
 
+  </div>
 </div>

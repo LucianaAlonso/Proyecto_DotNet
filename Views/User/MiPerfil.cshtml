@@ -1,0 +1,67 @@
+<div class="titulo-pagina">
+    <span>Mi Perfil</span>
+</div>
+
+<div class="card text-center" style="width: 50%;">
+    <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-user"></i> Datos Personales</h5>
+        <p class="card-text">
+        <div class="user-data">
+            <label for="nombre"><b><u>Nombre y Apellido:</u></b> @ViewBag.Nombre @ViewBag.Apellido</label>
+        </div>
+        <div class="user-data">
+            <label for="mail"><b><u>Mail:</u></b> @ViewBag.Mail</label>
+        </div>
+        <div class="user-data">
+            <label for="ObraSocial"><b><u>Obra Social:</u></b> @ViewBag.ObraSocial</label>
+        </div>
+        </p>
+        <button type="button" class="btn btn-dark" data-toggle="modal"
+            data-target='#editUsuarioModal'>Editar</button>
+    </div>
+    
+        <!-- Modal Editar-->
+        <div class="modal fade" id='editUsuarioModal' tabindex="-1" role="dialog"
+            aria-labelledby="editUsuarioModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" id="headerModal">
+                        <h5 class="modal-title" id="editUsuarioModalLabel">@ViewBag.Nombre @ViewBag.Apellido</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <form method="POST" asp-action="EditarUsuario">
+                        <div class="modal-body" id="bodyModal">
+
+                            <input type="hidden" name="mail" value="@ViewBag.Mail">
+                            <input type="hidden" name="nombre" value="@ViewBag.Nombre">
+                            <input type="hidden" name="apellido" value="@ViewBag.Apellido">
+                            <div class="form-group">
+                                <label for="obraSocial">ObraSocial</label>
+                                <select class="form-control" name="obraSocial">
+                                    @foreach (var os in ViewBag.ObrasSociales)
+                                    {
+                                        <option>@os.Nombre</option>
+                                    }
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contraseña">Contraseña</label>
+                                    <input type="password" value="@ViewBag.Contraseña" class="form-control"
+                                        name="contraseña" required>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-dark">Guardar</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    
+</div>

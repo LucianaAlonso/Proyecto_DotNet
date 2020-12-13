@@ -99,4 +99,11 @@ body {
   text-align: center;
 }
 
+.data-title {
+  font-size: x-large;
+  font-family: 'Quicksand', sans-serif;
+}
 
+.user-data {
+  font-family: 'Quicksand', sans-serif;
+}

@@ -81,6 +81,21 @@ namespace Proyecto.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Usuario",
+                columns: table => new
+                {
+                    Mail = table.Column<string>(nullable: false),
+                    Nombre = table.Column<string>(nullable: false),
+                    Apellido = table.Column<string>(nullable: false),
+                    Contraseña = table.Column<string>(nullable: false),
+                    ObraSocial = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuario", x => x.Mail);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Plan",
                 columns: table => new
                 {
@@ -95,27 +110,6 @@ namespace Proyecto.Migrations
                     table.PrimaryKey("PK_Plan", x => x.ID);
                     table.ForeignKey(
                         name: "FK_Plan_ObraSocial_ObraSocialID",
-                        column: x => x.ObraSocialID,
-                        principalTable: "ObraSocial",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuario",
-                columns: table => new
-                {
-                    Mail = table.Column<string>(nullable: false),
-                    Nombre = table.Column<string>(nullable: false),
-                    Apellido = table.Column<string>(nullable: false),
-                    Contraseña = table.Column<string>(nullable: false),
-                    ObraSocialID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuario", x => x.Mail);
-                    table.ForeignKey(
-                        name: "FK_Usuario_ObraSocial_ObraSocialID",
                         column: x => x.ObraSocialID,
                         principalTable: "ObraSocial",
                         principalColumn: "ID",
@@ -152,11 +146,6 @@ namespace Proyecto.Migrations
                 name: "IX_Turno_PacienteMail",
                 table: "Turno",
                 column: "PacienteMail");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Usuario_ObraSocialID",
-                table: "Usuario",
-                column: "ObraSocialID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -180,10 +169,10 @@ namespace Proyecto.Migrations
                 name: "Turno");
 
             migrationBuilder.DropTable(
-                name: "Usuario");
+                name: "ObraSocial");
 
             migrationBuilder.DropTable(
-                name: "ObraSocial");
+                name: "Usuario");
         }
     }
 }

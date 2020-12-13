@@ -31,6 +31,34 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        public IActionResult MiPerfil(){
+            Usuario usuarioLogeado = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
+            ViewBag.Nombre = usuarioLogeado.Nombre;
+            ViewBag.Apellido = usuarioLogeado.Apellido;
+            ViewBag.Mail = usuarioLogeado.Mail;
+            ViewBag.ObraSocial = usuarioLogeado.ObraSocial;
+            ViewBag.Contraseña = usuarioLogeado.Contraseña;
+            ViewBag.ObrasSociales = db.ObraSocial.ToList();
+            return View();
+        }
+
+        public IActionResult Transaccion(){
+            return View();
+        }
+
+        public IActionResult EditarUsuario(string mail, string nombre, string apellido, string obraSocial, string contraseña){
+            Usuario usuario = db.Usuario.FirstOrDefault(u => u.Mail == mail);
+            usuario.Mail = mail;
+            usuario.Nombre = nombre;
+            usuario.Apellido = apellido;
+            usuario.ObraSocial = obraSocial;
+            usuario.Contraseña = contraseña;
+
+            db.Usuario.Update(usuario);
+            db.SaveChanges();
+            return View("Transaccion");
+        }
+
         public IActionResult Salir(){
             HttpContext.Session.Remove("UsuarioLogueado");
             return RedirectToAction("InicioSesion", "Login") ;

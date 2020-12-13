@@ -15,7 +15,7 @@ namespace Sanatorio.Models {
         [Required]
         public string Contraseña { get; set; }
 
-        public ObraSocial ObraSocial { get; set; }
+        public string ObraSocial { get; set; }
         
         public List<Turno> Turnos { get; set; }
     }

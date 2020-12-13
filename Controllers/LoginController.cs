@@ -54,11 +54,12 @@ namespace Proyecto.Controllers
 
         
         [HttpPost]
-        public IActionResult RegistrarUsuario(string mail, string nombre, string apellido, string contraseña) {
+        public IActionResult RegistrarUsuario(string mail, string nombre, string apellido, string obraSocial, string contraseña) {
             Usuario nuevoUsuario = new Usuario{
                 Mail = mail,
                 Nombre = nombre,
                 Apellido = apellido,
+                ObraSocial = obraSocial,
                 Contraseña = contraseña
             };
             

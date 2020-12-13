@@ -26,3 +26,8 @@
     color: white;
     border-color: #343a40;
 }
+
+#card-os {
+    background-color: rgba(13, 18, 24, 0.945); 
+    margin: 10px;
+}

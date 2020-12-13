@@ -38,3 +38,4 @@ update Nota set URLNotaCompleta = 'https://www.fundacionfavaloro.org/programa-ch
 where id=160;
 update Nota set URLNotaCompleta = 'https://www.fundacionfavaloro.org/consecuencias-de-la-cuarentena-eterna/'
 where id=161;
+
