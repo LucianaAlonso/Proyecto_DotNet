@@ -54,6 +54,19 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        public IActionResult NotaUno(){
+            return View();
+        }
+
+        public IActionResult NotaDos(){
+            return View();
+        }
+
+        public IActionResult NotaTres(){
+            return View();
+        }
+
+
         [HttpPost]
         public IActionResult EnviarConsulta(string nombre, string mail, string telefono, string consulta) {
 

@@ -14,5 +14,7 @@ namespace Sanatorio.Models {
         public string Cuerpo { get; set; }
         [Required]
         public DateTime Fecha { get; set; }
+        [Required]
+        public string URLImagen { get; set; }
     }
 }

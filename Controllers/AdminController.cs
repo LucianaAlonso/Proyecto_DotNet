@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Proyecto.Models;
 using Sanatorio.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace Proyecto.Controllers
 {
@@ -138,6 +140,40 @@ namespace Proyecto.Controllers
             ViewBag.Info = "La obra social " + nombre;
             db.ObraSocial.Add(nuevaOS);
             db.SaveChanges();
+            return View("ResultadoDelProceso");
+        }
+
+        public IActionResult AgregarNota(string titulo, string archivo, string fecha, string imagen){
+
+            MailAddress to = new MailAddress("sistemasSanatorioFavaloro@gmail.com");
+            MailAddress from = new MailAddress("adminsanatoriofavaloro@gmail.com");
+            MailMessage message = new MailMessage(from, to);
+
+            message.Subject = "Solicitud para agregar una noticia";
+            message.Body =  "<h3>Estimados: </h3>" +
+                                "<div><p>Envío en el archvo adjunto el texto de la nota a agregar.</p></div>" +
+                                "<div><p>Titulo: "+ titulo + "Ruta en la carpeta compartida: " + imagen + "</p></div>" +
+                                "<div><p>Saludos Coridales</p></div>" +
+                                "<div><p>Departamento de Administración Sanatorio Favaloro.</p></div>";
+            
+            //message.Attachment.Add(new Attachment(rutaArchivo));
+
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    UseDefaultCredentials = false,
+                    Credentials = new System.Net.NetworkCredential("adminsanatoriofavaloro@gmail.com", "favaloro123"),
+                    EnableSsl = true
+                }; 
+
+                try
+                {  
+                    client.Send(message);
+                }
+                catch (SmtpException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             return View("ResultadoDelProceso");
         }
 
