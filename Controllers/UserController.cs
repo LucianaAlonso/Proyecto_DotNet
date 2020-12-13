@@ -24,7 +24,7 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        public IActionResult SolicitarTurno(){
+        public IActionResult TurnosOnline(){
             Usuario usuarioLogeado = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
             ViewBag.Nombre = usuarioLogeado.Nombre;
             ViewBag.Mail = usuarioLogeado.Mail;
