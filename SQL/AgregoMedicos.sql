@@ -1,7 +1,7 @@
 -- SQLite
 
 INSERT INTO `Medico` (ID, NombreYApellido, Especialidad, RolEnEspecialidad)
-VALUES (200, 'Dr. Horacio Casabé', 'Cardiología Clínica', 'Jefe de Servicio');
+VALUES (7, 'Dr. Horacio Casabé', 'Cardiología Clínica', 'Jefe de Servicio');
 INSERT INTO `Medico` (ID, NombreYApellido, Especialidad, RolEnEspecialidad)
 VALUES (8, 'Dr. Gustavo Giunta', 'Cardiología Clínica', 'Coordinador');
 INSERT INTO `Medico` (ID, NombreYApellido, Especialidad, RolEnEspecialidad)

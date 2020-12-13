@@ -6,11 +6,14 @@ namespace Sanatorio.Models {
     public class ObraSocial {
         
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+        [Required]
         public string Nombre { get; set; }
         public string PaginaWeb { get; set; }
         
         public List<Plan> Planes { get; set; }
         [Required]
-        public bool Activa { get; set; }
+        public string Estado { get; set; }
     }
 }

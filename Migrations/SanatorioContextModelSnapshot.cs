@@ -96,16 +96,22 @@ namespace Proyecto.Migrations
 
             modelBuilder.Entity("Sanatorio.Models.ObraSocial", b =>
                 {
-                    b.Property<string>("Nombre")
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Activa")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PaginaWeb")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Nombre");
+                    b.HasKey("ID");
 
                     b.ToTable("ObraSocial");
                 });
@@ -123,12 +129,12 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ObraSocialNombre")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("ObraSocialID")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ObraSocialNombre");
+                    b.HasIndex("ObraSocialID");
 
                     b.ToTable("Plan");
                 });
@@ -174,12 +180,12 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ObraSocialNombre")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("ObraSocialID")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Mail");
 
-                    b.HasIndex("ObraSocialNombre");
+                    b.HasIndex("ObraSocialID");
 
                     b.ToTable("Usuario");
                 });
@@ -188,7 +194,7 @@ namespace Proyecto.Migrations
                 {
                     b.HasOne("Sanatorio.Models.ObraSocial", "ObraSocial")
                         .WithMany("Planes")
-                        .HasForeignKey("ObraSocialNombre");
+                        .HasForeignKey("ObraSocialID");
                 });
 
             modelBuilder.Entity("Sanatorio.Models.Turno", b =>
@@ -204,7 +210,7 @@ namespace Proyecto.Migrations
                 {
                     b.HasOne("Sanatorio.Models.ObraSocial", "ObraSocial")
                         .WithMany()
-                        .HasForeignKey("ObraSocialNombre");
+                        .HasForeignKey("ObraSocialID");
                 });
 #pragma warning restore 612, 618
         }

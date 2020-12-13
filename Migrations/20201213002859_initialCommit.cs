@@ -67,13 +67,15 @@ namespace Proyecto.Migrations
                 name: "ObraSocial",
                 columns: table => new
                 {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(nullable: false),
                     PaginaWeb = table.Column<string>(nullable: true),
-                    Activa = table.Column<bool>(nullable: false)
+                    Estado = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ObraSocial", x => x.Nombre);
+                    table.PrimaryKey("PK_ObraSocial", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,17 +85,17 @@ namespace Proyecto.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(nullable: false),
-                    ObraSocialNombre = table.Column<string>(nullable: true),
+                    ObraSocialID = table.Column<int>(nullable: true),
                     Activo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Plan", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Plan_ObraSocial_ObraSocialNombre",
-                        column: x => x.ObraSocialNombre,
+                        name: "FK_Plan_ObraSocial_ObraSocialID",
+                        column: x => x.ObraSocialID,
                         principalTable: "ObraSocial",
-                        principalColumn: "Nombre",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -105,16 +107,16 @@ namespace Proyecto.Migrations
                     Nombre = table.Column<string>(nullable: false),
                     Apellido = table.Column<string>(nullable: false),
                     Contraseña = table.Column<string>(nullable: false),
-                    ObraSocialNombre = table.Column<string>(nullable: true)
+                    ObraSocialID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuario", x => x.Mail);
                     table.ForeignKey(
-                        name: "FK_Usuario_ObraSocial_ObraSocialNombre",
-                        column: x => x.ObraSocialNombre,
+                        name: "FK_Usuario_ObraSocial_ObraSocialID",
+                        column: x => x.ObraSocialID,
                         principalTable: "ObraSocial",
-                        principalColumn: "Nombre",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -140,9 +142,9 @@ namespace Proyecto.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Plan_ObraSocialNombre",
+                name: "IX_Plan_ObraSocialID",
                 table: "Plan",
-                column: "ObraSocialNombre");
+                column: "ObraSocialID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Turno_PacienteMail",
@@ -150,9 +152,9 @@ namespace Proyecto.Migrations
                 column: "PacienteMail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_ObraSocialNombre",
+                name: "IX_Usuario_ObraSocialID",
                 table: "Usuario",
-                column: "ObraSocialNombre");
+                column: "ObraSocialID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

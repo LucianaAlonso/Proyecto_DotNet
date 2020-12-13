@@ -65,12 +65,38 @@ namespace Proyecto.Controllers
 
         public IActionResult EliminarMedico(int ID)
         {
-            Medico medico = db.Medico.FirstOrDefault(n => n.ID == ID);
+            Medico medico = db.Medico.FirstOrDefault(m => m.ID == ID);
             
             db.Medico.Remove(medico);
             db.SaveChanges();
 
             return Redirect("VerMedicos");
+        }
+
+        public IActionResult VerObrasSociales(){
+            ViewBag.ObrasSociales = db.ObraSocial.ToList();
+            return View();
+        }
+
+        public IActionResult EditarObraSocial(int ID, string nombre, string web, string estado) {
+            ObraSocial obraSocial = db.ObraSocial.FirstOrDefault(os => os.ID == ID);
+            obraSocial.Nombre = nombre;
+            obraSocial.PaginaWeb = web;
+            obraSocial.Estado = estado;
+
+            db.ObraSocial.Update(obraSocial);
+            db.SaveChanges();
+
+            return Redirect("VerObrasSociales");
+        }
+
+        public IActionResult EliminarObraSocial(int ID) {
+            ObraSocial obraSocial = db.ObraSocial.FirstOrDefault(os => os.ID == ID);
+            
+            db.ObraSocial.Remove(obraSocial);
+            db.SaveChanges();
+
+            return Redirect("VerObrasSociales");
         }
 
         public IActionResult AgregarOS(){
