@@ -86,8 +86,10 @@ namespace Proyecto.Controllers
                 Especialidad = especialidad,
                 RolEnEspecialidad = rolEnEspecialidad
             };
-
-            ViewBag.Info = " El profesional " + nombreYApellido + " con la especialidad " + especialidad;
+            
+            ViewBag.Boton = "Medicos";
+            ViewBag.URL = "/Admin/VerMedicos";
+            ViewBag.Info = " El profesional " + nombreYApellido + " con la especialidad " + especialidad + " fue agregado con exito !";
             db.Medico.Add(nuevoMedico);
             db.SaveChanges();
             return View("ResultadoDelProceso");
@@ -100,6 +102,7 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult EditarObraSocial(int ID, string nombre, string web, string estado) {
             ObraSocial obraSocial = db.ObraSocial.FirstOrDefault(os => os.ID == ID);
             obraSocial.Nombre = nombre;
@@ -125,6 +128,7 @@ namespace Proyecto.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult AgregarObraSocial(string nombre, string web, string estado){
             ObraSocial obraSocial = db.ObraSocial.FirstOrDefault(os => os.Nombre == nombre);
             if(obraSocial != null){
@@ -137,44 +141,58 @@ namespace Proyecto.Controllers
                 Estado = estado
             };
 
-            ViewBag.Info = "La obra social " + nombre;
+            ViewBag.Boton = "Obras Sociales";
+            ViewBag.URL = "/Admin/VerObrasSociales";
+            ViewBag.Info = "La obra social " + nombre + " fue agregada con exito !" ;
             db.ObraSocial.Add(nuevaOS);
             db.SaveChanges();
             return View("ResultadoDelProceso");
         }
 
-        public IActionResult AgregarNota(string titulo, string archivo, string fecha, string imagen){
+        public IActionResult VerNotas(){
+            ViewBag.Notas = db.Nota.ToList();
+            return View("VerNotas");
+        }
 
-            MailAddress to = new MailAddress("sistemasSanatorioFavaloro@gmail.com");
-            MailAddress from = new MailAddress("adminsanatoriofavaloro@gmail.com");
-            MailMessage message = new MailMessage(from, to);
-
-            message.Subject = "Solicitud para agregar una noticia";
-            message.Body =  "<h3>Estimados: </h3>" +
-                                "<div><p>Envío en el archvo adjunto el texto de la nota a agregar.</p></div>" +
-                                "<div><p>Titulo: "+ titulo + "Ruta en la carpeta compartida: " + imagen + "</p></div>" +
-                                "<div><p>Saludos Coridales</p></div>" +
-                                "<div><p>Departamento de Administración Sanatorio Favaloro.</p></div>";
-            
-            //message.Attachment.Add(new Attachment(rutaArchivo));
-
-
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
-                {
-                    UseDefaultCredentials = false,
-                    Credentials = new System.Net.NetworkCredential("adminsanatoriofavaloro@gmail.com", "favaloro123"),
-                    EnableSsl = true
-                }; 
-
-                try
-                {  
-                    client.Send(message);
-                }
-                catch (SmtpException ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+        [HttpPost]
+        public IActionResult AgregarNota(string titulo, string cuerpo, string fecha, string imagen, string URLnota){
+            Nota nuevaNota = new Nota{
+                Titulo = titulo,
+                Cuerpo = cuerpo,
+                Fecha = fecha,
+                URLImagen = imagen,
+                URLNotaCompleta = URLnota
+            };
+            ViewBag.Boton = "Notas";
+            ViewBag.URL = "/Admin/VerNotas";
+            ViewBag.Info = "La nota " + titulo + " fue agregada con exito !";
+            db.Nota.Add(nuevaNota);
+            db.SaveChanges();
             return View("ResultadoDelProceso");
+        }
+
+        [HttpPost]
+        public IActionResult EditarNota(int ID, string titulo, string cuerpo, string fecha, string imagen, string URLnota){
+            Nota nota = db.Nota.FirstOrDefault(n => n.ID == ID);
+            nota.Titulo = titulo;
+            nota.Cuerpo = cuerpo;
+            nota.Fecha = fecha;
+            nota.URLImagen = imagen;
+            nota.URLNotaCompleta = URLnota;
+
+            db.Nota.Update(nota);
+            db.SaveChanges();
+
+            return Redirect("VerNotas");
+        }
+
+        public IActionResult EliminarNota(int ID){
+            Nota nota = db.Nota.FirstOrDefault(n => n.ID == ID);
+            
+            db.Nota.Remove(nota);
+            db.SaveChanges();
+
+            return Redirect("VerNotas");
         }
 
         private JsonResult AgregarAdminASession(Admin adminLogin) {

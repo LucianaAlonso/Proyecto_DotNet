@@ -9,7 +9,7 @@ using Sanatorio.Models;
 namespace Proyecto.Migrations
 {
     [DbContext(typeof(SanatorioContext))]
-    [Migration("20201213002859_initialCommit")]
+    [Migration("20201213174605_initialCommit")]
     partial class initialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,10 +84,19 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<string>("Fecha")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("URLImagen")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("URLNotaCompleta")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

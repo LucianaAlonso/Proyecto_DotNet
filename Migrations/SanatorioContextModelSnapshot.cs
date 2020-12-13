@@ -82,10 +82,19 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<string>("Fecha")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("URLImagen")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("URLNotaCompleta")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

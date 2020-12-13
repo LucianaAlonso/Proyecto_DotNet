@@ -13,8 +13,10 @@ namespace Sanatorio.Models {
         [Required]
         public string Cuerpo { get; set; }
         [Required]
-        public DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
         [Required]
         public string URLImagen { get; set; }
+        [Required]
+        public string URLNotaCompleta { get; set; }
     }
 }

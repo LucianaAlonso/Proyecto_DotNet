@@ -40,43 +40,23 @@
 else
 {
     <div class="container">
-        <div class="d-flex p-2 bd-highlight">Bienvenido @TempData["Nombre"]</div>
+        <div class="d-flex p-2 bd-highlight title-page">Bienvenido @TempData["Nombre"]</div>
 
         <div>
             <div class="card-group">
-                <div class="card">
-                    <img src="~/Imagenes/diadelmedico.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">EBUS: Nuevo estudio pulmonar</h5>
-                        <p class="card-text">Enfermedades pulmonares: un estudio que permite nuevas y mejores alternativas para el diagnóstico, 
-                            estadificación y tratamiento con múltiples beneficios para el paciente.</p>
-                            <a class="btn btn-dark" asp-controller="Home" asp-action="NotaUno" role="button">Ver Más</a>
-                        <p class="card-text"><small class="text-muted">9 de Diciembre</small></p>
+                @foreach (var nota in ViewBag.Notas)
+                {
+
+                    <div class="card">
+                        <img src="@nota.URLImagen" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@nota.Titulo</h5>
+                            <p class="card-text">@nota.Cuerpo</p>
+                            <a class="btn btn-dark" href=@nota.URLNotaCompleta target="_blank" role="button">Ver Más</a>
+                            <p class="card-text"><small class="text-muted">@nota.Fecha</small></p>
+                        </div>
                     </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
-                        </p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional
-                            content. This card has even longer content than the first to show that equal height action.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>

@@ -25,6 +25,7 @@ namespace Proyecto.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Notas = db.Nota.ToList();
             return View();
         }
 
@@ -54,50 +55,35 @@ namespace Proyecto.Controllers
             return View();
         }
 
-        public IActionResult NotaUno(){
-            return View();
-        }
-
-        public IActionResult NotaDos(){
-            return View();
-        }
-
-        public IActionResult NotaTres(){
-            return View();
-        }
-
-
         [HttpPost]
         public IActionResult EnviarConsulta(string nombre, string mail, string telefono, string consulta) {
+            try {
 
-            MailAddress to = new MailAddress(mail);
-            MailAddress from = new MailAddress("sanatoriofavaloro@gmail.com");
-            MailMessage message = new MailMessage(from, to);
+                MailAddress to = new MailAddress(mail);
+                MailAddress from = new MailAddress("sanatoriofavaloro@gmail.com");
+                MailMessage message = new MailMessage(from, to);
 
                 message.Subject = "Recibimos tu consulta";
                 message.Body = "<h3>Hola " + nombre + "</h3>" +
-                                "<div><p>Gracias por comunicarte con nuestro sanatorio, te informamos que recibimos tu consulta satisfactoriamente y te estaremos contestando por este medio lo mas pronto posible.</p></div>" +
-                                "<div><p>Saludos Coridales</p></div>" +
-                                "<div><p><i class=" + "fas fa-users" + "></i> Servicio de atención a pacientes del Sanatorio Favaloro.</p></div>";
+                                    "<div><p>Gracias por comunicarte con nuestro sanatorio, te informamos que recibimos tu consulta satisfactoriamente y te estaremos contestando por este medio lo mas pronto posible.</p></div>" +
+                                    "<div><p>Saludos Coridales</p></div>" +
+                                    "<div><p><i class=" + "fas fa-users" + "></i> Servicio de atención a pacientes del Sanatorio Favaloro.</p></div>";
 
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
-                {
-                    UseDefaultCredentials = false,
-                    Credentials = new System.Net.NetworkCredential("sanatoriofavaloro@gmail.com", "favaloro123"),
-                    EnableSsl = true
-                }; 
-
-                try
-                {  
-                    client.Send(message);
-                }
-                catch (SmtpException ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-
-                return Redirect("/Home/Index");
+                SmtpClient client = new SmtpClient();
+                client.Port = 25;
+                client.Host = "smtp.gmail.com";
+                client.EnableSsl = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new System.Net.NetworkCredential("sanatoriofavaloro@gmail.com", "favaloro123");           
+                client.Send(message);
             }
+            catch (SmtpException ex) {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return Redirect("/Home/Index");
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

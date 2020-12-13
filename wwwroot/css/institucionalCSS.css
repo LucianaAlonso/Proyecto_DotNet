@@ -27,3 +27,8 @@
   #card-accordion-style {
     background-color: dimgray;
   }
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: xx-large;
+    padding: 10px 0;
+}

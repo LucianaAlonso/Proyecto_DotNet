@@ -23,9 +23,10 @@
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading"><i class="fas fa-check-circle"></i> Información ingresada correctamente.</h4>
             <div class="info-text">
-                <p> @ViewBag.Info fue agregado con exito !</p>
+                <p> @ViewBag.Info</p>
             </div>
         </div>
         <a type="button" href=/Admin/AgregarDatos class="btn btn-dark">Volver</a>
+        <a type="button" href=@ViewBag.URL class="btn btn-dark">Ir a @ViewBag.Boton</a>
     </div>
 }

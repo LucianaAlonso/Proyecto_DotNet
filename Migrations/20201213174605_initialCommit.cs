@@ -56,7 +56,9 @@ namespace Proyecto.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Titulo = table.Column<string>(nullable: false),
                     Cuerpo = table.Column<string>(nullable: false),
-                    Fecha = table.Column<DateTime>(nullable: false)
+                    Fecha = table.Column<string>(nullable: false),
+                    URLImagen = table.Column<string>(nullable: false),
+                    URLNotaCompleta = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

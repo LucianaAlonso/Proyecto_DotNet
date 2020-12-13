@@ -61,10 +61,10 @@
 
 
         <div class="col mb-4">
-            <div class="card">
+            <div class="card" style="background-color: wheat;">
                 <div class="card-body">
                     <h5 class="card-title">Agregar una Obra Social</h5>
-                    <div class="card-text">
+                    <div class="card-text" style="font-family: 'Quicksand', sans-serif;">
                         <form class="px-4 py-3" method="POST" asp-action="AgregarObraSocial">
 
                             <div class="form-group">
@@ -91,10 +91,10 @@
 
 
         <div class="col mb-4">
-            <div class="card">
+            <div class="card" style="background-color: wheat;">
                 <div class="card-body">
                     <h5 class="card-title">Agregar una Nota</h5>
-                    <div class="card-text">
+                    <div class="card-text" style="font-family: 'Quicksand', sans-serif;">
                         <form class="px-4 py-3" method="POST" asp-action="AgregarNota">
 
                             <div class="form-group">
@@ -102,14 +102,20 @@
                                 <input type="text" class="form-control" name="titulo">
                             </div>
                             <div class="form-group">
-                                <div class="form-group">
-                                    <label for="archivo">Ingresa el archivo con la nota</label>
-                                    <input type="file" class="form-control-file" id="archivo">
-                                </div>
+                                <label for="cuerpo">Cuerpo</label>
+                                <textarea type="text" class="form-control" name="cuerpo"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha de publicación</label>
+                                <input type="text" class="form-control" name="fecha">
                             </div>
                             <div class="form-group">
                                 <label for="imagen">URL de la Imagen</label>
                                 <input type="text" class="form-control" name="imagen">
+                            </div>
+                            <div class="form-group">
+                                <label for="URLnota">URL Nota Completa</label>
+                                <input type="text" class="form-control" name="URLnota">
                             </div>
                             <button type="submit" class="btn btn-dark">Guardar</button>
                         </form>
