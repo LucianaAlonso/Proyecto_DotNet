@@ -50,8 +50,12 @@ namespace Proyecto.Controllers
             return View();
         }
 
-         public IActionResult Contacto()
-        {
+         public IActionResult Contacto() {
+            Usuario usuarioLogeado = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
+            if(usuarioLogeado != null){                
+                ViewBag.Nombre = usuarioLogeado.Nombre;
+                ViewBag.Mail = usuarioLogeado.Mail;
+            }
             return View();
         }
 
