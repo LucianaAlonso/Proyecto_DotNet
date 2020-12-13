@@ -73,6 +73,26 @@ namespace Proyecto.Controllers
             return Redirect("VerMedicos");
         }
 
+        public IActionResult ResultadoDelProceso(){
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AgregarMedico(string nombreYApellido, string especialidad, string rolEnEspecialidad) {
+            Medico nuevoMedico = new Medico{
+                NombreYApellido = nombreYApellido,
+                Especialidad = especialidad,
+                RolEnEspecialidad = rolEnEspecialidad
+            };
+
+            ViewBag.Info = " El profesional " + nombreYApellido + " con la especialidad " + especialidad;
+            db.Medico.Add(nuevoMedico);
+            db.SaveChanges();
+            return View("ResultadoDelProceso");
+        }
+
+        
+
         public IActionResult VerObrasSociales(){
             ViewBag.ObrasSociales = db.ObraSocial.ToList();
             return View();
@@ -99,8 +119,26 @@ namespace Proyecto.Controllers
             return Redirect("VerObrasSociales");
         }
 
-        public IActionResult AgregarOS(){
+        public IActionResult AgregarDatos(){
             return View();
+        }
+
+        public IActionResult AgregarObraSocial(string nombre, string web, string estado){
+            ObraSocial obraSocial = db.ObraSocial.FirstOrDefault(os => os.Nombre == nombre);
+            if(obraSocial != null){
+                ViewBag.Error = true;
+                return View("ResultadoDelProceso");
+            }
+            ObraSocial nuevaOS = new ObraSocial{
+                Nombre = nombre,
+                PaginaWeb = web,
+                Estado = estado
+            };
+
+            ViewBag.Info = "La obra social " + nombre;
+            db.ObraSocial.Add(nuevaOS);
+            db.SaveChanges();
+            return View("ResultadoDelProceso");
         }
 
         private JsonResult AgregarAdminASession(Admin adminLogin) {

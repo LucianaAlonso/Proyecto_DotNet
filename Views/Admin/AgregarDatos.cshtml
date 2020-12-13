@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="alert alert-dark" role="alert">
+        <i class="fas fa-info-circle"></i> Administrador: Recuerde que solo debe agregar información con el
+        correspondiente pedido escrito del director médico de la institución.
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar un Profesional</h5>
+                    <div class="card-text">
+                        <form class="px-4 py-3" method="POST" asp-action="AgregarMedico">
+
+                            <div class="form-group">
+                                <label for="nombreYApellido">Nombre y Apellido</label>
+                                <input type="text" class="form-control" name="nombreYApellido">
+                            </div>
+                            <div class="form-group">
+                                <label for="especialidad">Especialidad</label>
+                                <select class="form-control" name="especialidad">
+                                    <option>Cardiología Clínica</option>
+                                    <option>Cardiología Intervencionista</option>
+                                    <option>Cardiología Pediátrica</option>
+                                    <option>Cirugía Cardiovascular</option>
+                                    <option>Cirugía de Columna</option>
+                                    <option>Cirugía General</option>
+                                    <option>Cirugía Plástica y Reparadora</option>
+                                    <option>Cirugía Torácica</option>
+                                    <option>Gastroenterología</option>
+                                    <option>Ginecología</option>
+                                    <option>Hematología</option>
+                                    <option>Nefrología</option>
+                                    <option>Neumonología</option>
+                                    <option>Oncología</option>
+                                    <option>Ortopedia y Traumatología</option>
+                                    <option>Otorrinolaringología</option>
+                                    <option>Urología</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rolEnEspecialidad">Rol en Especialidad</label>
+                                <select class="form-control" name="rolEnEspecialidad">
+                                    <option>Cirujano</option>
+                                    <option>Cirujana</option>
+                                    <option>Coordinador</option>
+                                    <option>Jefe de Servicio</option>
+                                    <option>Jefa de Servicio</option>
+                                    <option>Médico de Planta</option>
+                                    <option>Médica de Planta</option>
+                                    <option>Sub-Jefe de Servicio</option>
+                                    <option>Sub-Jefa de Servicio</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar una Obra Social</h5>
+                    <div class="card-text">
+                        <form class="px-4 py-3" method="POST" asp-action="AgregarObraSocial">
+
+                            <div class="form-group">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" name="nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="web">Pagina Web</label>
+                                <input type="text" class="form-control" name="web">
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" name="estado">
+                                    <option>Activa</option>
+                                    <option>Inactiva</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Agregar una Nota</h5>
+                    <div class="card-text">
+                        <form class="px-4 py-3" method="POST" asp-action="AgregarNota">
+
+                            <div class="form-group">
+                                <label for="titulo">Título</label>
+                                <input type="text" class="form-control" name="titulo">
+                            </div>
+                            <div class="form-group">
+                                <label for="cuerpo">Cuerpo</label>
+                                <textarea type="text" class="form-control" name="cuerpo"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha de publicación</label>
+                                <input type="text" class="form-control" name="fecha">
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
