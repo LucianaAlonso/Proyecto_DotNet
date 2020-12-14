@@ -11,9 +11,11 @@ namespace Sanatorio.Models {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
-        public Usuario Paciente { get; set; }
+        public string Paciente { get; set; }   
         [Required]
-        public DateTime FechaYHora { get; set; }
+        public string Medico { get; set; }
+        [Required]
+        public string FechaYHora { get; set; }
         [Required]
         public string Estado { get; set; }
     }

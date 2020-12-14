@@ -77,10 +77,9 @@ namespace Proyecto.Controllers
                                     "<div><p><i class=" + "fas fa-users" + "></i> Servicio de atención a pacientes del Sanatorio Favaloro.</p></div>";
 
                 SmtpClient client = new SmtpClient();
-                client.Port = 25;
+                client.Port = 587;
                 client.Host = "smtp.gmail.com";
-                client.EnableSsl = false;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.EnableSsl = true;
                 client.UseDefaultCredentials = false;
                 client.Credentials = new System.Net.NetworkCredential("sanatoriofavaloro@gmail.com", "favaloro123");           
                 client.Send(message);

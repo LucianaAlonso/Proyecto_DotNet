@@ -158,16 +158,24 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("FechaYHora")
+                    b.Property<string>("FechaYHora")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PacienteMail")
+                    b.Property<string>("Medico")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Paciente")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UsuarioMail")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("PacienteMail");
+                    b.HasIndex("UsuarioMail");
 
                     b.ToTable("Turno");
                 });
@@ -206,11 +214,9 @@ namespace Proyecto.Migrations
 
             modelBuilder.Entity("Sanatorio.Models.Turno", b =>
                 {
-                    b.HasOne("Sanatorio.Models.Usuario", "Paciente")
+                    b.HasOne("Sanatorio.Models.Usuario", null)
                         .WithMany("Turnos")
-                        .HasForeignKey("PacienteMail")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UsuarioMail");
                 });
 #pragma warning restore 612, 618
         }

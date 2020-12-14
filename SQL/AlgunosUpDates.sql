@@ -39,3 +39,6 @@ where id=160;
 update Nota set URLNotaCompleta = 'https://www.fundacionfavaloro.org/consecuencias-de-la-cuarentena-eterna/'
 where id=161;
 
+UPDATE Turno set Estado = 'Confirmado'
+where id=162;
+

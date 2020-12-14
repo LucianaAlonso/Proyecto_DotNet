@@ -21,6 +21,8 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult MisTurnos(){
+            Usuario user = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
+            ViewBag.Turnos = db.Turno.Where(t => t.Paciente == user.Mail);
             return View();
         }
 
@@ -29,6 +31,15 @@ namespace Proyecto.Controllers
             ViewBag.Nombre = usuarioLogeado.Nombre;
             ViewBag.Mail = usuarioLogeado.Mail;
             return View();
+        }
+
+        public IActionResult CancelarTurno(int ID){
+            Turno turno = db.Turno.FirstOrDefault(t => t.ID == ID);
+            turno.Estado = "Cancelado";
+
+            db.Turno.Update(turno);
+            db.SaveChanges();
+            return Redirect("MisTurnos");
         }
 
         public IActionResult MiPerfil(){

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Proyecto.Migrations
 {
@@ -122,19 +121,21 @@ namespace Proyecto.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    PacienteMail = table.Column<string>(nullable: false),
-                    FechaYHora = table.Column<DateTime>(nullable: false),
-                    Estado = table.Column<string>(nullable: false)
+                    Paciente = table.Column<string>(nullable: false),
+                    Medico = table.Column<string>(nullable: false),
+                    FechaYHora = table.Column<string>(nullable: false),
+                    Estado = table.Column<string>(nullable: false),
+                    UsuarioMail = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Turno", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Turno_Usuario_PacienteMail",
-                        column: x => x.PacienteMail,
+                        name: "FK_Turno_Usuario_UsuarioMail",
+                        column: x => x.UsuarioMail,
                         principalTable: "Usuario",
                         principalColumn: "Mail",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -143,9 +144,9 @@ namespace Proyecto.Migrations
                 column: "ObraSocialID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Turno_PacienteMail",
+                name: "IX_Turno_UsuarioMail",
                 table: "Turno",
-                column: "PacienteMail");
+                column: "UsuarioMail");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
