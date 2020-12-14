@@ -202,7 +202,7 @@ namespace Proyecto.Controllers
 
         public IActionResult Salir(){
             HttpContext.Session.Remove("AdminLogueado");
-            return RedirectToAction("InicioSesion", "Login") ;
+            return RedirectToAction("InicioSesionAdmin") ;
         }
 
        
