@@ -75,6 +75,7 @@ namespace Proyecto.Controllers
                                     "<div><p>Saludos Coridales</p></div>" +
                                     "<div><p><i class=" + "fas fa-users" + "></i> Servicio de atención a pacientes del Sanatorio Favaloro.</p></div>";
 
+                message.IsBodyHtml = true;
                 SmtpClient client = new SmtpClient();
                 client.Port = 587;
                 client.Host = "smtp.gmail.com";
