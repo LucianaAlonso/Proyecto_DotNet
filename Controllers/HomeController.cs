@@ -23,8 +23,11 @@ namespace Proyecto.Controllers
             this.db = contexto;
         }
 
-        public IActionResult Index()
-        {
+        public IActionResult Index(){
+            Usuario usuarioLogueado = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
+            if(usuarioLogueado != null){
+                ViewBag.NombreUsuario = usuarioLogueado.Nombre;
+            }
             ViewBag.Notas = db.Nota.ToList();
             return View();
         }
