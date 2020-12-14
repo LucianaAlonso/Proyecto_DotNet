@@ -60,9 +60,6 @@ namespace Proyecto.Controllers
 
         public IActionResult EditarUsuario(string mail, string nombre, string apellido, string obraSocial, string contraseña){
             Usuario usuario = db.Usuario.FirstOrDefault(u => u.Mail == mail);
-            usuario.Mail = mail;
-            usuario.Nombre = nombre;
-            usuario.Apellido = apellido;
             usuario.ObraSocial = obraSocial;
             usuario.Contraseña = contraseña;
 
@@ -71,6 +68,15 @@ namespace Proyecto.Controllers
             return View("Transaccion");
         }
 
+        public IActionResult EliminarCuenta(string Mail){
+            HttpContext.Session.Remove("UsuarioLogueado");
+            Usuario usuario = db.Usuario.FirstOrDefault(u => u.Mail == Mail);
+            db.Usuario.Remove(usuario);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+        
         public IActionResult Salir(){
             HttpContext.Session.Remove("UsuarioLogueado");
             return RedirectToAction("InicioSesion", "Login") ;
