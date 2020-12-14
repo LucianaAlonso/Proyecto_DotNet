@@ -33,11 +33,12 @@ namespace Proyecto.Controllers
 
         public IActionResult MiPerfil(){
             Usuario usuarioLogeado = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
-            ViewBag.Nombre = usuarioLogeado.Nombre;
-            ViewBag.Apellido = usuarioLogeado.Apellido;
-            ViewBag.Mail = usuarioLogeado.Mail;
-            ViewBag.ObraSocial = usuarioLogeado.ObraSocial;
-            ViewBag.Contraseña = usuarioLogeado.Contraseña;
+            Usuario user = db.Usuario.FirstOrDefault(u => u.Mail == usuarioLogeado.Mail);
+            ViewBag.Nombre = user.Nombre;
+            ViewBag.Apellido = user.Apellido;
+            ViewBag.Mail = user.Mail;
+            ViewBag.ObraSocial = user.ObraSocial;
+            ViewBag.Contraseña = user.Contraseña;
             ViewBag.ObrasSociales = db.ObraSocial.ToList();
             return View();
         }
