@@ -48,8 +48,7 @@ namespace Proyecto.Controllers
             return View();
         }
          public IActionResult Coberturas() {
-             ViewBag.ObrasSociales = db.ObraSocial.ToList();
-             ViewBag.Planes = db.Plan.ToList();
+             ViewBag.ObrasSociales = db.ObraSocial.Where(os => os.Estado == "Activa").ToList();
             return View();
         }
 
