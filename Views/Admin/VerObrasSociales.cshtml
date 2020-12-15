@@ -1,17 +1,32 @@
 <div class="container-fluid">
     <div class="row">
-        @foreach (var os in @ViewBag.ObrasSociales)
+        @foreach (var os in ViewBag.ObrasSociales)
         {
-
-            <div class="card-group">
-                <div class="card text-white bg-secondary mb-3" style="margin: 5px;">
-                    <div class="card-header" style="padding: 10px;">@os.Nombre</div>
-                    <div class="card-body">
-                        <button type="button" class="btn btn-light" data-toggle="modal"
-                            data-target='#@("editOSModal"+os.ID)'>Editar</button>
-                        <button type="button" class="btn btn-light" data-toggle="modal"
-                            data-target='#@("deleteOSConfirmModal"+os.ID)'>Eliminar</button>
-
+            @if(@os.Estado == "Activa"){
+                <div class="card-group">
+                    <div class="card text-white bg-secondary mb-3" style="margin: 5px;">
+                        <div class="card-header" style="padding: 10px;">@os.Nombre</div>
+                        <div class="card-body">
+                            <button type="button" class="btn btn-light" data-toggle="modal"
+                                data-target='#@("editOSModal"+os.ID)'>Editar</button>
+                            <button type="button" class="btn btn-light" data-toggle="modal"
+                                data-target='#@("deleteOSConfirmModal"+os.ID)'>Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            }else{
+                <div class="card-group">
+                    <div class="card text-white bg-danger mb-3" style="margin: 5px;">
+                        <div class="card-header" style="padding: 10px;">@os.Nombre</div>
+                        <div class="card-body">
+                            <button type="button" class="btn btn-light" data-toggle="modal"
+                                data-target='#@("editOSModal"+os.ID)'>Editar</button>
+                            <button type="button" class="btn btn-light" data-toggle="modal"
+                                data-target='#@("deleteOSConfirmModal"+os.ID)'>Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            }
                         <!-- Modal Editar-->
                         <div class="modal fade" id='@("editOSModal"+os.ID)' tabindex="-1" role="dialog"
                             aria-labelledby="editOSModalLabel" data-backdrop="static" data-keyboard="false"
@@ -85,9 +100,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
         }
     </div>
 </div>
