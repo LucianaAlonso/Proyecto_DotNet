@@ -48,7 +48,7 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult VerMedicos(){
-            ViewBag.Medicos = db.Medico.ToList();
+            ViewBag.Medicos = db.Medico.OrderBy(o => o.Especialidad).ToList();
             return View();
         }
 
@@ -98,7 +98,7 @@ namespace Proyecto.Controllers
         
 
         public IActionResult VerObrasSociales(){
-            ViewBag.ObrasSociales = db.ObraSocial.ToList();
+            ViewBag.ObrasSociales = db.ObraSocial.OrderBy(o => o.Nombre).ToList();
             return View();
         }
 

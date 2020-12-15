@@ -107,3 +107,13 @@ body {
 .user-data {
   font-family: 'Quicksand', sans-serif;
 }
+
+#turno-usuario-cancel {
+  background-color: antiquewhite;
+  margin: 10px;
+}
+
+#turno-usuario-ok {
+  background-color: #b2f7ab;
+  margin: 10px;
+}
