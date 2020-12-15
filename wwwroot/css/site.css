@@ -75,7 +75,7 @@ body {
 
 .title-sf {
   text-align: -webkit-center;
-  font-family: 'Cormorant Garamond', serif;
+  /*font-family: 'Cormorant Garamond', serif;*/
   background-color: wheat;
   padding: 15px;
   font-size: 200%;
