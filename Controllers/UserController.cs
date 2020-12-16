@@ -22,7 +22,12 @@ namespace Proyecto.Controllers
 
         public IActionResult MisTurnos(){
             Usuario user = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
-            ViewBag.Turnos = db.Turno.Where(t => t.Paciente == user.Mail);
+            List<Turno> turnos = db.Turno.Where(t => t.Paciente == user.Mail).ToList();
+            if(turnos.Count() != 0){
+                ViewBag.Turnos = turnos;
+                return View();
+            }
+            ViewBag.SinTurnos = true;
             return View();
         }
 

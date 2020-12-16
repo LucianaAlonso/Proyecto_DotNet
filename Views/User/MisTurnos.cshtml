@@ -1,78 +1,83 @@
+@{
+    bool NoHayTurnos = ViewBag.SinTurnos != null;
+}
+
 <div class="title-page">
     <u>Mis Turnos</u>
 </div>
 
 <div class="container-fluid">
     <div class="row">
-        @foreach (var turno in ViewBag.Turnos)
-        {
-            @if(@turno.Estado == "Confirmado"){
-                <div class="card col-md-3 col-sm-12 text-center card border-success" id="turno-usuario-ok">
-                <div class="card-body text-success">
-                    <h5 class="card-title">@turno.Medico</h5>
-                    <p class="card-text">
-                        <b><u>Fecha y Hora:</u></b> @turno.FechaYHora
-                    </p>
-                    <p class="card-text">
-                        <b><u>Estado del Turno:</u></b> @turno.Estado   <i class="fas fa-check-circle"></i>
-                    </p>
-                </div>
-                <div class="card-footer bg-transparent border-success">
-                    <button class="btn btn-danger" data-toggle="modal"
-                        data-target='#@("cancelConfirmModal"+turno.ID)'>Cancelar Turno</button>
-                    
-                </div>
-                <!-- Modal Eliminar-->
-                    <div class="modal fade" id='@("cancelConfirmModal"+turno.ID)' tabindex="-1" role="dialog"
-                        aria-labelledby="cancelConfirmModalLabel" data-backdrop="static" data-keyboard="false"
-                        aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header" id="headerModal" style="background-color: wheat;">
-                                    <h5 class="modal-title" id="cancelConfirmModalLabel">
-                                        <i class="fas fa-exclamation-triangle"></i> Atención !
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
+        @if(NoHayTurnos){
+            <div class="alert alert-dark" role="alert">
+                Estimado paciente, no posee turnos reservados.
+            </div>
+        }else{
+            @foreach (var turno in ViewBag.Turnos) {
+
+                @if(@turno.Estado == "Confirmado"){
+                    <div class="card col-md-3 col-sm-12 text-center card border-success" id="turno-usuario-ok">
+                        <div class="card-body text-success">
+                            <h5 class="card-title">@turno.Medico</h5>
+                            <p class="card-text">
+                                <b><u>Fecha y Hora:</u></b> @turno.FechaYHora
+                            </p>
+                            <p class="card-text">
+                                <b><u>Estado del Turno:</u></b> @turno.Estado   <i class="fas fa-check-circle"></i>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-success">
+                        <button class="btn btn-danger" data-toggle="modal"
+                            data-target='#@("cancelConfirmModal"+turno.ID)'>Cancelar Turno</button>
+                        
+                        </div>
+                    <!-- Modal Eliminar-->
+                        <div class="modal fade" id='@("cancelConfirmModal"+turno.ID)' tabindex="-1" role="dialog"
+                            aria-labelledby="cancelConfirmModalLabel" data-backdrop="static" data-keyboard="false"
+                            aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header" id="headerModal" style="background-color: wheat;">
+                                        <h5 class="modal-title" id="cancelConfirmModalLabel">
+                                            <i class="fas fa-exclamation-triangle"></i> Atención !
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <form method="POST" asp-action="CancelarTurno">
+                                        <div class="modal-body" id="bodyModal">
+                                            <input type="hidden" name="ID" value="@turno.ID">
+                                            Está seguro de eliminar el turno con @turno.Medico ? No podrá deshacer esta acción.
+                                        </div>
+                                        <div class="modal-footer" style="background-color: wheat;">
+                                            <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
+                                            <button type="submit" class="btn btn-dark">Si</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <form method="POST" asp-action="CancelarTurno">
-                                    <div class="modal-body" id="bodyModal">
-                                        <input type="hidden" name="ID" value="@turno.ID">
-                                        Está seguro de eliminar el turno con @turno.Medico ? No podrá deshacer esta acción.
-                                    </div>
-                                    <div class="modal-footer" style="background-color: wheat;">
-                                        <button type="button" class="btn btn-dark" data-dismiss="modal">No</button>
-                                        <button type="submit" class="btn btn-dark">Si</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
+                </div>
+                }else{
+                    <div class="card col-md-3 col-sm-12 text-center card border-danger" id="turno-usuario-cancel">
+                    <div class="card-body text-danger">
+                        <h5 class="card-title">@turno.Medico</h5>
+                        <p class="card-text">
+                            <b><u>Fecha y Hora:</u></b> @turno.FechaYHora
+                        </p>
+                        <p class="card-text">
+                            <b><u>Estado del Turno:</u></b> @turno.Estado   <i class="fas fa-window-close"></i>
+                        </p>
                     </div>
-            </div>
-            }else{
-                <div class="card col-md-3 col-sm-12 text-center card border-danger" id="turno-usuario-cancel">
-                <div class="card-body text-danger">
-                    <h5 class="card-title">@turno.Medico</h5>
-                    <p class="card-text">
-                        <b><u>Fecha y Hora:</u></b> @turno.FechaYHora
-                    </p>
-                    <p class="card-text">
-                        <b><u>Estado del Turno:</u></b> @turno.Estado   <i class="fas fa-window-close"></i>
-                    </p>
+                    <div class="card-footer bg-transparent border-danger">
+                        <p style="color: #dc3545;"><b>Por favor, no asista a este turno !</b></p>
+                        <a type="button" href=/User/TurnosOnline class="btn btn-light">Reprogramar</a>
+                    </div>
                 </div>
-                <div class="card-footer bg-transparent border-danger">
-                    <p style="color: #dc3545;"><b>Por favor, no asista a este turno !</b></p>
-                    <a type="button" href=/User/TurnosOnline class="btn btn-light">Reprogramar</a>
-                </div>
-            </div>
+                }
             }
-            
         }
 
-
-
     </div>
-
-
 </div>
