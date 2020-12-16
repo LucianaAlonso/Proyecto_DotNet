@@ -9,7 +9,7 @@ using Sanatorio.Models;
 namespace Proyecto.Migrations
 {
     [DbContext(typeof(SanatorioContext))]
-    [Migration("20201214192746_initialCommit")]
+    [Migration("20201216221408_initialCommit")]
     partial class initialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,21 @@ namespace Proyecto.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Autoridad");
+                });
+
+            modelBuilder.Entity("Sanatorio.Models.Especialidad", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Especialidad");
                 });
 
             modelBuilder.Entity("Sanatorio.Models.Medico", b =>

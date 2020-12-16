@@ -48,7 +48,7 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult Registro(){
-            ViewBag.ObrasSociales = db.ObraSocial.ToList();
+            ViewBag.ObrasSociales = db.ObraSocial.Where(os => os.Estado == "Activa").OrderBy(os => os.Nombre).ToList();
             return View();
         }
 
