@@ -41,7 +41,6 @@ VALUES (157, 'Swiss Medical', 'https://www.swissmedical.com.ar/', 'Activa');
 INSERT INTO `ObraSocial` (ID, Nombre, PaginaWeb, Estado)
 VALUES (158, 'William Hope', 'https://whope.com.ar/', 'Activa');
 
-
-
 INSERT INTO `ObraSocial` (ID, Nombre, PaginaWeb, Estado)
 VALUES (164, 'IOMA', 'https://ioma.com.ar/', 'Suspendida');
+

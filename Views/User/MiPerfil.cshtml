@@ -39,7 +39,12 @@
                             <select class="form-control" name="obraSocial">
                                 @foreach (var os in ViewBag.ObrasSociales)
                                 {
-                                    <option>@os.Nombre</option>
+                                    @if(@os.Nombre == @ViewBag.ObraSocial){
+                                        <option selected="true">@os.Nombre</option>
+                                    }else{
+                                        <option>@os.Nombre</option>
+                                    }
+                                    
                                 }
 
                             </select>
