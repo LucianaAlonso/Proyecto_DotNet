@@ -56,6 +56,11 @@ namespace Proyecto.Controllers
         
         [HttpPost]
         public IActionResult RegistrarUsuario(string mail, string nombre, string apellido, string obraSocial, string contraseña) {
+            Usuario user = db.Usuario.FirstOrDefault(u => u.Mail == mail);
+            if(user != null){
+                ViewBag.MailRegistrado = true;
+                return View("RegistroResult");
+            }
             Usuario nuevoUsuario = new Usuario{
                 Mail = mail,
                 Nombre = nombre,
@@ -66,10 +71,10 @@ namespace Proyecto.Controllers
             
             db.Usuario.Add(nuevoUsuario);
             db.SaveChanges();
-            return View("Bienvenida");
+            return View("RegistroResult");
         }
 
-        public IActionResult Bienvenida(){
+        public IActionResult RegistroResult(){
             return View();
         }
 
