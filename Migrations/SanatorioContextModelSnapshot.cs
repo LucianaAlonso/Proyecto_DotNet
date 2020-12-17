@@ -162,9 +162,8 @@ namespace Proyecto.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Medico")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("MedicoID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Paciente")
                         .IsRequired()
@@ -174,6 +173,8 @@ namespace Proyecto.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("MedicoID");
 
                     b.HasIndex("UsuarioMail");
 
@@ -214,6 +215,12 @@ namespace Proyecto.Migrations
 
             modelBuilder.Entity("Sanatorio.Models.Turno", b =>
                 {
+                    b.HasOne("Sanatorio.Models.Medico", "Medico")
+                        .WithMany()
+                        .HasForeignKey("MedicoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Sanatorio.Models.Usuario", null)
                         .WithMany("Turnos")
                         .HasForeignKey("UsuarioMail");

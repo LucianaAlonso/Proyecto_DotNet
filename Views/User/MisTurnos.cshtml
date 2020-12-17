@@ -18,7 +18,10 @@
                 @if(@turno.Estado == "Confirmado"){
                     <div class="card col-md-3 col-sm-12 text-center card border-success" id="turno-usuario-ok">
                         <div class="card-body text-success">
-                            <h5 class="card-title">@turno.Medico</h5>
+                            <h5 class="card-title">@turno.Medico.NombreYApellido</h5>
+                            <p class="card-text">
+                                <b><u>Especialidad: </u></b> @turno.Medico.Especialidad
+                            </p>
                             <p class="card-text">
                                 <b><u>Fecha y Hora:</u></b> @turno.FechaYHora
                             </p>

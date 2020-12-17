@@ -13,7 +13,7 @@ namespace Sanatorio.Models {
         [Required]
         public string Paciente { get; set; }   
         [Required]
-        public string Medico { get; set; }
+        public Medico Medico { get; set; }
         [Required]
         public string FechaYHora { get; set; }
         [Required]
