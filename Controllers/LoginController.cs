@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Proyecto.Models;
 using Sanatorio.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Proyecto.Controllers
 {

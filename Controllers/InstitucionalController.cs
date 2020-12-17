@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Proyecto.Models;
 using Sanatorio.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Proyecto.Controllers
 {
@@ -26,7 +27,7 @@ namespace Proyecto.Controllers
         }
 
          public IActionResult Staff() {
-            ViewBag.CardiologiaClinica = db.Medico.Where(med => med.Especialidad == "Cardiología Clínica");
+           /* ViewBag.CardiologiaClinica = db.Medico.Where(med => med.Especialidad == "Cardiología Clínica");
             ViewBag.CardiologiaIntervencionista = db.Medico.Where(med => med.Especialidad == "Cardiología Intervencionista"); 
             ViewBag.CirugiaCardiovascular = db.Medico.Where(med => med.Especialidad == "Cirugía Cardiovascular"); 
             ViewBag.CardiologiaPediatrica = db.Medico.Where(med => med.Especialidad == "Cardiología Pediátrica"); 
@@ -44,7 +45,7 @@ namespace Proyecto.Controllers
             ViewBag.Oncologia = db.Medico.Where(med => med.Especialidad == "Oncología"); 
             ViewBag.Traumatologia = db.Medico.Where(med => med.Especialidad == "Ortopedia y Traumatología"); 
             ViewBag.Otorrinolaringologia = db.Medico.Where(med => med.Especialidad == "Otorrinolaringología"); 
-            ViewBag.Urologia = db.Medico.Where(med => med.Especialidad == "Urología"); 
+            ViewBag.Urologia = db.Medico.Where(med => med.Especialidad == "Urología"); */
             return View();
         }
 

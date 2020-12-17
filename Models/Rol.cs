@@ -3,19 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sanatorio.Models {
-
-    public class Medico {
-
+    public class Rol {
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
-        public string NombreYApellido { get; set; }
-        [Required]
-        public Especialidad Especialidad { get; set;}
-        [Required]
-        public Rol RolEnEspecialidad { get; set; }
-
+        public string Nombre { get; set; }
     }
-    
 }

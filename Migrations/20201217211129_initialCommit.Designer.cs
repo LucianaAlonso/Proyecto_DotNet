@@ -9,7 +9,7 @@ using Sanatorio.Models;
 namespace Proyecto.Migrations
 {
     [DbContext(typeof(SanatorioContext))]
-    [Migration("20201217205458_initialCommit")]
+    [Migration("20201217211129_initialCommit")]
     partial class initialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,25 +51,42 @@ namespace Proyecto.Migrations
                     b.ToTable("Autoridad");
                 });
 
+            modelBuilder.Entity("Sanatorio.Models.Especialidad", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Especialidad");
+                });
+
             modelBuilder.Entity("Sanatorio.Models.Medico", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Especialidad")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("EspecialidadID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("NombreYApellido")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("RolEnEspecialidad")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("RolEnEspecialidadID")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("EspecialidadID");
+
+                    b.HasIndex("RolEnEspecialidadID");
 
                     b.ToTable("Medico");
                 });
@@ -150,6 +167,21 @@ namespace Proyecto.Migrations
                     b.ToTable("Plan");
                 });
 
+            modelBuilder.Entity("Sanatorio.Models.Rol", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Rol");
+                });
+
             modelBuilder.Entity("Sanatorio.Models.Turno", b =>
                 {
                     b.Property<int>("ID")
@@ -206,6 +238,21 @@ namespace Proyecto.Migrations
                     b.HasKey("Mail");
 
                     b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("Sanatorio.Models.Medico", b =>
+                {
+                    b.HasOne("Sanatorio.Models.Especialidad", "Especialidad")
+                        .WithMany()
+                        .HasForeignKey("EspecialidadID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sanatorio.Models.Rol", "RolEnEspecialidad")
+                        .WithMany()
+                        .HasForeignKey("RolEnEspecialidadID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Sanatorio.Models.Plan", b =>

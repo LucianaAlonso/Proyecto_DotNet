@@ -9,6 +9,8 @@ using Proyecto.Models;
 using Sanatorio.Models;
 using System.Net;
 using System.Net.Mail;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Proyecto.Controllers
 {
@@ -48,16 +50,18 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult VerMedicos(){
-            ViewBag.Medicos = db.Medico.OrderBy(o => o.Especialidad).ToList();
+            ViewBag.Medicos = db.Medico.Include(m => m.RolEnEspecialidad).Include(m => m.Especialidad).OrderBy(m => m.Especialidad.Nombre).ToList();
+            ViewBag.Especialidades = db.Especialidad.ToList();
+            ViewBag.Roles = db.Rol.ToList();
             return View();
         }
 
         [HttpPost]
         public IActionResult EditarMedico(int ID, string especialidad, string rolEnEspecialidad)
         {
-            Medico medico = db.Medico.FirstOrDefault(n => n.ID == ID);
-            medico.Especialidad = especialidad;
-            medico.RolEnEspecialidad = rolEnEspecialidad;
+            Medico medico = db.Medico.Include(m => m.Especialidad).Include(m => m.RolEnEspecialidad).FirstOrDefault(n => n.ID == ID);
+            medico.Especialidad = db.Especialidad.FirstOrDefault(e => e.Nombre == especialidad);
+            medico.RolEnEspecialidad = db.Rol.FirstOrDefault(r => r.Nombre == rolEnEspecialidad);
 
             db.Medico.Update(medico);
             db.SaveChanges();
@@ -81,10 +85,12 @@ namespace Proyecto.Controllers
 
         [HttpPost]
         public IActionResult AgregarMedico(string nombreYApellido, string especialidad, string rolEnEspecialidad) {
+            Especialidad esp = db.Especialidad.FirstOrDefault(e => e.Nombre == especialidad);
+            Rol rol = db.Rol.FirstOrDefault(r => r.Nombre == rolEnEspecialidad);
             Medico nuevoMedico = new Medico{
                 NombreYApellido = nombreYApellido,
-                Especialidad = especialidad,
-                RolEnEspecialidad = rolEnEspecialidad
+                Especialidad = esp,
+                RolEnEspecialidad = rol
             };
             
             ViewBag.Boton = "Medicos";
@@ -125,6 +131,8 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult AgregarDatos(){
+            ViewBag.Especialidades = db.Especialidad.ToList();
+            ViewBag.Roles = db.Rol.ToList();
             return View();
         }
 

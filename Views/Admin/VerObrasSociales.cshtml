@@ -58,8 +58,13 @@
                                             <div class="form-group">
                                                 <label for="estado">Estado</label>
                                                 <select class="form-control" name="estado">
-                                                    <option>Activa</option>
-                                                    <option>Suspendida</option>
+                                                    @if(@os.Estado == "Activa"){
+                                                        <option selected="true">Activa</option>
+                                                        <option>Suspendida</option>
+                                                    }else{                                                        
+                                                        <option>Activa</option>
+                                                        <option selected="true">Suspendida</option>
+                                                    }
                                                 </select>
                                             </div>
                                         </div>

@@ -23,5 +23,7 @@ namespace Sanatorio.Models {
         public DbSet<Admin> Admin { get; set; }
         public DbSet<Turno> Turno { get; set; }
         public DbSet<Plan> Plan { get; set; }
+        public DbSet<Especialidad> Especialidad { get; set; }
+        public DbSet<Rol> Rol { get; set; }
     }
 }

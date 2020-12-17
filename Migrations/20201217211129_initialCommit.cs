@@ -33,18 +33,16 @@ namespace Proyecto.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Medico",
+                name: "Especialidad",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    NombreYApellido = table.Column<string>(nullable: false),
-                    Especialidad = table.Column<string>(nullable: false),
-                    RolEnEspecialidad = table.Column<string>(nullable: false)
+                    Nombre = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Medico", x => x.ID);
+                    table.PrimaryKey("PK_Especialidad", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,6 +75,19 @@ namespace Proyecto.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ObraSocial", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rol",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nombre = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rol", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,6 +127,33 @@ namespace Proyecto.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Medico",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NombreYApellido = table.Column<string>(nullable: false),
+                    EspecialidadID = table.Column<int>(nullable: false),
+                    RolEnEspecialidadID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Medico", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Medico_Especialidad_EspecialidadID",
+                        column: x => x.EspecialidadID,
+                        principalTable: "Especialidad",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Medico_Rol_RolEnEspecialidadID",
+                        column: x => x.RolEnEspecialidadID,
+                        principalTable: "Rol",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Turno",
                 columns: table => new
                 {
@@ -143,6 +181,16 @@ namespace Proyecto.Migrations
                         principalColumn: "Mail",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Medico_EspecialidadID",
+                table: "Medico",
+                column: "EspecialidadID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Medico_RolEnEspecialidadID",
+                table: "Medico",
+                column: "RolEnEspecialidadID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Plan_ObraSocialID",
@@ -185,6 +233,12 @@ namespace Proyecto.Migrations
 
             migrationBuilder.DropTable(
                 name: "Usuario");
+
+            migrationBuilder.DropTable(
+                name: "Especialidad");
+
+            migrationBuilder.DropTable(
+                name: "Rol");
         }
     }
 }
