@@ -17,12 +17,9 @@
         <div class="card-body">
           <h5 class="card-title">Planes</h5>
           <p class="card-text">
-            @foreach (var plan in ViewBag.Planes)
-              {
-                  @if(@plan.ObraSocial.ID == @os.ID){
-                    <div style="font-family: 'Quicksand', sans-serif;">• @plan.Nombre</div>
-                  }
-              }
+            @foreach (var plan in @os.Planes){
+              <div style="font-family: 'Quicksand', sans-serif;">• @plan.Nombre</div>
+            }
           </p>
         </div>
       </div>

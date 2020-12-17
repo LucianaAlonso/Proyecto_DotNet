@@ -1,332 +1,38 @@
 <div class="title">
   Servicios Médicos
 </div>
+
 <div class="row">
+  <div class="col">
+    <div id="accordion">
 
-  <div class="col-sm">
-    <div id="accordion" class="accordion-style">
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingOne">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              Cardiología Clínica
-            </button>
-          </h5>
-        </div>
+      @foreach(var esp in ViewBag.Especialidades){
+        
+          <div class="card">
+            <div class="card-header" id="card-accordion-style" id='@("heading"+esp.ID)'>
+              <h5 class="mb-0">
+              <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
+                data-target='#@("collapse"+esp.ID)' aria-expanded="false" aria-controls='@("collapse"+esp.ID)'>
+                @esp.Nombre
+              </button>
+              </h5>
+            </div>
 
-        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CardiologiaClinica)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
+            <div id='@("collapse"+esp.ID)' class="collapse" aria-labelledby='@("heading"+esp.ID)' data-parent="#accordion">
+              <div class="card-body">
+                @foreach (var medico in ViewBag.Medicos) {
+                  @if(@medico.Especialidad.Nombre == @esp.Nombre){
+                    <div>@medico.NombreYApellido - @medico.RolEnEspecialidad.Nombre</div>
+                  }
+                        
+                }
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingTwo">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Cardiología Intervencionista
-            </button>
-          </h5>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CardiologiaIntervencionista)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingThree">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Cirugía Cardiovascular
-            </button>
-          </h5>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CirugiaCardiovascular)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingFour">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              Cardiología Pediátrica
-            </button>
-          </h5>
-        </div>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CardiologiaPediatrica)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingFive">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-              Gastroenterología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Gastroenterologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingSix">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-              Cirugía Toracica
-            </button>
-          </h5>
-        </div>
-        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CirugiaToracica)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm">
-    <div id="accordion" class="accordion-style">
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingEight">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-              Cirugía de Columna
-            </button>
-          </h5>
-        </div>
-
-        <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CirugiaColumna)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingNine">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-              Cirugía General
-            </button>
-          </h5>
-        </div>
-        <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CirugiaGeneral)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingTen">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-              Cirugía Plástica y Reparadora
-            </button>
-          </h5>
-        </div>
-        <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.CirugiaPlastica)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingEleven">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-              Ginecología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Ginecologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingTwelve">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
-              Hematología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Hematologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingThirteen">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
-              Nefrología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseThirteen" class="collapse" aria-labelledby="headingThirteen" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Nefrologa)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm">
-    <div id="accordion" class="accordion-style">
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingFourteen">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
-              Neumonología
-            </button>
-          </h5>
-        </div>
-
-        <div id="collapseFourteen" class="collapse" aria-labelledby="headingFourteen" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Neumonologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingFifteen">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
-              Oncología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseFifteen" class="collapse" aria-labelledby="headingFifteen" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Oncologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingSixteen">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
-              Ortopedia y Traumatología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseSixteen" class="collapse" aria-labelledby="headingSixteen" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Traumatologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingSeventeen">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
-              Otorrinolaringología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseSeventeen" class="collapse" aria-labelledby="headingSeventeen" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Otorrinolaringologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header" id="card-accordion-style" id="headingEighteen">
-          <h5 class="mb-0">
-            <button id="button-link-accordion" class="btn btn-link collapsed" data-toggle="collapse"
-              data-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
-              Urología
-            </button>
-          </h5>
-        </div>
-        <div id="collapseEighteen" class="collapse" aria-labelledby="headingEighteen" data-parent="#accordion">
-          <div class="card-body">
-            @foreach (var medico in ViewBag.Urologia)
-            {
-              <div>@medico.NombreYApellido - @medico.RolEnEspecialidad</div>
-            }
-          </div>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </div>
+    
+      
+     

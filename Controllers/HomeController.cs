@@ -49,8 +49,7 @@ namespace Proyecto.Controllers
             return View();
         }
          public IActionResult Coberturas() {
-             ViewBag.ObrasSociales = db.ObraSocial.Where(os => os.Estado == "Activa").OrderBy(o => o.Nombre).ToList();
-             ViewBag.Planes = db.Plan.ToList();
+             ViewBag.ObrasSociales = db.ObraSocial.Include(o => o.Planes).Where(os => os.Estado == "Activa").OrderBy(o => o.Nombre).ToList();
             return View();
         }
 
