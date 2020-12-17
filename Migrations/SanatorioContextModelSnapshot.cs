@@ -49,21 +49,6 @@ namespace Proyecto.Migrations
                     b.ToTable("Autoridad");
                 });
 
-            modelBuilder.Entity("Sanatorio.Models.Especialidad", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Especialidad");
-                });
-
             modelBuilder.Entity("Sanatorio.Models.Medico", b =>
                 {
                     b.Property<int>("ID")

@@ -21,12 +21,12 @@ namespace Proyecto.Controllers
         }
 
         public IActionResult MisTurnos(){
-            Usuario user = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
-            List<Turno> turnos = db.Turno.Where(t => t.Paciente == user.Mail).ToList();
+            /*Usuario user = HttpContext.Session.Get<Usuario>("UsuarioLogueado");
+            List<Turno> turnos = db.Turno.Include(t => t.Paciente && t.Medico).Where(t => t.Paciente,Mail == user.Mail).ToList();
             if(turnos.Count() != 0){
                 ViewBag.Turnos = turnos;
                 return View();
-            }
+            }*/
             ViewBag.SinTurnos = true;
             return View();
         }

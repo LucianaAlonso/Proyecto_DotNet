@@ -33,19 +33,6 @@ namespace Proyecto.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Especialidad",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nombre = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Especialidad", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Medico",
                 columns: table => new
                 {
@@ -169,9 +156,6 @@ namespace Proyecto.Migrations
 
             migrationBuilder.DropTable(
                 name: "Autoridad");
-
-            migrationBuilder.DropTable(
-                name: "Especialidad");
 
             migrationBuilder.DropTable(
                 name: "Medico");

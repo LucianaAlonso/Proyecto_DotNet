@@ -65,7 +65,11 @@ namespace Proyecto.Controllers
             
             db.Usuario.Add(nuevoUsuario);
             db.SaveChanges();
-            return View("InicioSesion");
+            return View("Bienvenida");
+        }
+
+        public IActionResult Bienvenida(){
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
